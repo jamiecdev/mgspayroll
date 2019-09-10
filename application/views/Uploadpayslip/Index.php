@@ -76,11 +76,11 @@
                         <div class="row">
                           <div class="col">
                           <label for="gender">Department</label>
-                          <select class="form-control select2" name="department" style="width: 100%;">
+                          <select class="form-control select2" name="departmentID" style="width: 100%;">
                             <?php
                             foreach($results['department'] as $department)
                             {
-                            echo '<option value="'.$department->description.'">'.$department->description.'</option>';
+                            echo '<option value="'.$department->departmentID.'">'.$department->description.'</option>';
                             }
                             ?>  
                           </select>
@@ -104,7 +104,7 @@
                         </div>
                   </div>
                   <div class="modal-footer">
-        <input type="submit" name="action" id="action" class="btn btn-warning" value="Upload" /> 
+        <input type="submit" name="action" id="action" class="btn btn-warning btn-rounded" value="Upload" /> 
         </div>
       </form>
                 </div>
@@ -129,6 +129,7 @@
                   <tr>
                       <!-- <th>Employee Name</th> -->
                       <!-- <th>Employee Name</th> -->
+                      <th>Employee Name</th>
                       <th>Position</th>
                       <th>Department</th>
                       <th>Payslip Date</th>
@@ -142,7 +143,8 @@
 
                           echo '<tr>';
                           /*echo '<td>'.$frow->employeename.'</td>';*/
-                          echo '<td>'.$frow->datecreated.'</td>';
+                          echo '<td>'.$frow->firstname.' '.$frow->lastname.'</td>';
+                          echo '<td>'.$frow->position.'</td>';
                           echo '<td>'.$frow->department.'</td>';
                           echo '<td>'.$frow->datecreated.'</td>';
                           echo '<td><a class="btn btn-outline-warning btn-fw" style="margin-right: 10px;" href="Viewpayslip/preview?id='.$frow->payslipID.'" >View</a>

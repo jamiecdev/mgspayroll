@@ -11191,13 +11191,13 @@ fieldset:disabled .wizard > .actions a,
 }
 
 .btn-warning {
-  color: #212529;
+  color: #fff;
   background-color: #f29d56;
   border-color: #f29d56;
 }
 
 .btn-warning:hover {
-  color: #212529;
+  color: #fff;
   background-color: #ef8832;
   border-color: #ee8227;
 }
@@ -11207,7 +11207,7 @@ fieldset:disabled .wizard > .actions a,
 }
 
 .btn-warning.disabled, .btn-warning:disabled {
-  color: #212529;
+  color: #fff;
   background-color: #f29d56;
   border-color: #f29d56;
 }
@@ -25506,11 +25506,11 @@ dl li {
 }
 
 .nav-pills-success .nav-link {
-  color: #3bb001;
+  color: #f29d56;
 }
 
 .nav-pills-success .nav-link.active {
-  background: #3bb001;
+  background: #f29d56;
 }
 
 .nav-pills-info .nav-link {

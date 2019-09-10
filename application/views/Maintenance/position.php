@@ -79,7 +79,7 @@
       </div>
        <div class="modal-footer">
               <input type="hidden" name="positionID" id="positionID" />  
-              <input type="submit" name="action" id="action" class="btn btn-primary" value="Add" />   
+              <input type="submit" name="action" id="action" class="btn btn-warning btn-rounded" value="Add" />   
           </div>
     </div>
      </form>

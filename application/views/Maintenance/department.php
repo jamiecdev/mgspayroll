@@ -15,7 +15,7 @@
               <h6 class="mb-0 font-weight-bold"><i class="mdi mdi-account-multiple-outline"></i> Set Up Department</h6>
             </div>
             <div class="mt-3 mt-md-0">
-              <button class="btn btn-warning btn-rounded btn-sm" id="add_button" data-toggle="modal" data-target="#setuppositionModal"><i class="mdi mdi-plus-circle-outline"></i> New Department</button>
+              <button class="btn btn-warning btn-rounded btn-sm" id="add_button" data-toggle="modal" data-target="#setupdepartmentModal"><i class="mdi mdi-plus-circle-outline"></i> New Department</button>
             </div>
         </div>
         <div class="row">
@@ -66,7 +66,7 @@
       </div>
        <div class="modal-footer">
               <input type="hidden" name="departmentID" id="departmentID" />  
-              <input type="submit" name="action" id="action" class="btn btn-primary" value="Add" />   
+              <input type="submit" name="action" id="action" class="btn btn-warning btn-rounded" value="Add" />   
           </div>
     </div>
      </form>
