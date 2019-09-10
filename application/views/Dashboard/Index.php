@@ -12,17 +12,6 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="row portfolio-grid">
-
-                        <div class="col-md-4 col-sm-6 d-flex justify-content-center border-right">
-                          <div class="card-body">
-                            <div class="wrapper text-center">
-                              <h4 class="card-title">Alerts Popups</h4>
-                              <p class="card-description">A success message!</p>
-                              <button class="btn btn-outline-success" onclick="showSwal('warning-message-and-cancel')">Click here!</button>
-                            </div>
-                          </div>  
-                        </div>
-                        
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
                           <figure class="effect-text-in">
                             <img src="<?=base_url(); ?>assets/images/auth/10.png" alt="image"/>
