@@ -9,7 +9,7 @@
 
 			$this->load->model('Login_model');
 			$this->load->view('Template/Header', $data);
-			$this->load->view('Login/index', $data);
+			$this->load->view('Login/Index', $data);
 			$this->load->view('Template/Footer',  $data);
 		} 
 
@@ -17,7 +17,7 @@
 		{
 			if($this->session->userdata('userdata')) redirect(base_url());
 			$data['title'] = 'Login';
-			$this->load->view("Login/index", $data);	
+			$this->load->view("Login/Index", $data);	
 		}
 		
 		public function login_validation()

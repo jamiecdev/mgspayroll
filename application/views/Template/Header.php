@@ -140,14 +140,20 @@
               <img src="assets/images/faces/profileimg.png" alt="profile" class="img-lg rounded-circle mb-3"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item" href="/mgspayroll/Profile">
+               <?php echo anchor('Profile', '<i class="mdi mdi-face ml-4"></i>
+              <span class="menu-title">Profile</span>', 'class="nav-link"'); ?>
+              
+              <!-- <a class="dropdown-item" href="/mgspayroll/Profile">
                 <i class="mdi mdi-face "></i>
                 Profile
-              </a>
-               <a class="dropdown-item" href="/mgspayroll/login/logout"logout>
+              </a> -->
+               <?php echo anchor('Login/logout', '<i class="mdi mdi-logout ml-4"></i>
+              <span class="menu-title">Logout</span>', 'class="nav-link"'); ?>
+                
+               <!-- <a class="dropdown-item" href="/mgspayroll/login/logout"logout>
                 <i class="mdi mdi-logout"></i> 
                 Logout
-              </a>
+              </a> -->
             </div>
           </li>
           <!-- <li class="nav-item nav-settings d-none d-lg-flex">

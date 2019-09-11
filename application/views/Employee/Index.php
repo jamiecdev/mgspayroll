@@ -18,11 +18,11 @@
               <button class="btn btn-sm text-muted border-0 dropdown-toggle px-0" type="button" id="dropdownMenuSizeButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 15px;" >Filter by </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton2">
                 <h6 class="dropdown-header">Filter by</h6>
-                <a class="dropdown-item" href="/mgspayroll/employee">All</a>
-                <a class="dropdown-item" href="/mgspayroll/employee/show_active">Active</a>
-                <a class="dropdown-item" href="/mgspayroll/employee/show_terminated">Terminated</a>
-                <a class="dropdown-item" href="/mgspayroll/employee/show_endo">End of Contract</a>
-                <a class="dropdown-item" href="/mgspayroll/employee/show_resigned">Resigned</a>
+                <a class="dropdown-item" href="<?php echo base_url(); ?>Employee">All</a>
+                <a class="dropdown-item" href="#">Active</a>
+                <a class="dropdown-item" >Terminated</a>
+                <a class="dropdown-item" >End of Contract</a>
+                <a class="dropdown-item" >Resigned</a>
               </div>
               <button class="btn btn-warning btn-rounded btn-sm" id="add_button" data-toggle="modal" data-target="#addModal"><i class="mdi mdi-account-plus "></i> New Employee</button>
             </div>

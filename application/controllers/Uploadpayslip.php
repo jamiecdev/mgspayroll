@@ -11,7 +11,7 @@
   			$results = $this->Uploadpayslip_model->getallposition();
   			$data=array('results'=>$results);
 			$this->load->view('Template/Header', $data);
-			$this->load->view('Uploadpayslip/index', $data);
+			$this->load->view('Uploadpayslip/Index', $data);
 			$this->load->view('Template/Footer',  $data);
 
 		} 

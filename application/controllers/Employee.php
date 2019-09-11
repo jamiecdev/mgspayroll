@@ -13,7 +13,7 @@
 			$this->load->view('Template/Header');
   			/*$query = $this->db->query('SELECT * FROM employee');
          	$data['results'] = $query->result();*/
-			$this->load->view('Employee/index', $data);
+			$this->load->view('Employee/Index', $data);
 			$this->load->view('Template/Footer');
 		} 
 
