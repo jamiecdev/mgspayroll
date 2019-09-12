@@ -11,13 +11,18 @@ class Employee_model extends CI_Model
 	public function getallposition()
 		{
 			$position = $this->db->query('
-            SELECT * FROM position 
+            SELECT *
+            FROM department
+            LEFT JOIN position
+            ON department.departmentID=position.departmentID 
+            WHERE department.status = "Active"
+
         ');
 			$employee = $this->db->query('
             SELECT * FROM employee
         ');
 			$department = $this->db->query('
-            SELECT * FROM department 
+            SELECT * FROM department WHERE status = "Active" 
         ');
       $active = $this->db->query('
             SELECT * FROM employee WHERE status = "Active" 
@@ -53,4 +58,5 @@ class Employee_model extends CI_Model
       	}    
 }
 ?>
+
 

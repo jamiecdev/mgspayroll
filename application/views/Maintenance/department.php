@@ -26,6 +26,7 @@
                 <thead>
                   <tr>
                       <th>Department</th>
+                      <th>Status</th>
                       <th>Action</th>
                   </tr>
                 </thead>
@@ -35,6 +36,7 @@
 
                           echo '<tr>';
                           echo '<td>'.$r->description.'</td>';
+                          echo '<td><label class="badge badge-success">'.$r->status.'</label></td>'; 
                           echo '<td><button type="button" name="Update" id="'.$r->departmentID.'" class="btn btn-outline-warning department-edit" data-target="#setupdepartmentModal">View</button></td>' ;
                         }
                       ?>
@@ -63,6 +65,13 @@
         <label for="description">Description</label>
         <input type="text" class="form-control" id="description" name="description" required>
         </div>
+        <div class="form-check form-check-flat form-check-primary">
+                      <label class="form-check-label">
+                        <input type="hidden" name="status" value="Inactive">
+                        <input type="checkbox" name="status" value="Active">
+                       Active
+                      </label>
+                    </div>
       </div>
        <div class="modal-footer">
               <input type="hidden" name="departmentID" id="departmentID" />  

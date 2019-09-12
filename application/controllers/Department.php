@@ -20,7 +20,8 @@ class Department extends CI_Controller {
 	           {  
 	                $data = array(
  
-	                    'description' => $this->input->post('description')
+	                    'description' => $this->input->post('description'),
+	                    'status' => $this->input->post('status')
 	                );  
 	                $this->load->model('Department_model');  
 	                $this->Department_model->adddepartment($data); 
@@ -31,7 +32,9 @@ class Department extends CI_Controller {
 	           if($_POST["action"] == "Update")  
 	           {   
 	                $updated_data = array(   
-	                    'description' => $this->input->post('description')
+
+	                    'description' => $this->input->post('description'),
+	                    'status' => $this->input->post('status')
 	                );  
 	                $this->load->model('Department_model');  
 	                $this->Department_model->update($this->input->post("departmentID"), $updated_data); 

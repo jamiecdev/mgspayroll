@@ -18,10 +18,10 @@ class Uploadpayslip_model extends CI_Model
         ');*/
 
             $payslip = $this->db->query('
-            SELECT payslip.payslip, payslip.payslipdate, payslip.datecreated, payslip.payslipID, employee.firstname, employee.lastname, employee.position, employee.department
-            FROM employee
-            LEFT JOIN payslip
-            ON employee.employeeID=payslip.employeeID
+            SELECT *
+            FROM payslip
+            INNER JOIN employee
+            ON payslip.employeeID=employee.employeeID
         ');
             /*$departmentID = $this->db->query('
             SELECT * FROM department 
