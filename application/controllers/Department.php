@@ -26,7 +26,7 @@ class Department extends CI_Controller {
 	                $this->load->model('Department_model');  
 	                $this->Department_model->adddepartment($data); 
 	                $this->session->set_flashdata('department', 'dept');  
-	                redirect("Department/index");
+	                redirect("Department");
 
 	           }  
 	           if($_POST["action"] == "Update")  
@@ -51,6 +51,7 @@ class Department extends CI_Controller {
 	           foreach($data as $r)  
 	           { 
 	                $output['description'] = $r->description;
+	                $output['status'] = $r->status;
 	           }  
 	           echo json_encode($output);  
 	      }  

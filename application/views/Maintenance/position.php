@@ -35,8 +35,8 @@
                         foreach ($results['position'] as $r) {
 
                           echo '<tr>';
-                          echo '<td>'.$r->departmentID.'</td>'; 
-                          echo '<td>'.$r->description.'</td>';
+                          echo '<td>'.$r->description.'</td>'; 
+                          echo '<td>'.$r->posdescription.'</td>';
                           echo '<td><button type="button" name="Update" id="'.$r->positionID.'" class="btn btn-outline-warning position-edit" data-target="#setuppositionModal">View</button></td>' ;
                         }
                       ?>
@@ -73,8 +73,8 @@
                           </select>
             </div> 
         <div class="form-group">
-        <label for="description">description</label>
-        <input type="text" class="form-control" id="description" name="description" required>
+        <label for="posdescription">Position Name</label>
+        <input type="text" class="form-control" id="posdescription" name="posdescription" required>
         </div>
       </div>
        <div class="modal-footer">

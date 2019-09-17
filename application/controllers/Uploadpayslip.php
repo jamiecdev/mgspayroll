@@ -17,45 +17,56 @@
 		} 
 
 
-	    public function addpayslip(){
-	    $payslip = file_get_contents($_FILES['userImage']['tmp_name']);
-	    $imageProperties = getimageSize($_FILES['userImage']['tmp_name']);
+	    public function addpayslip()
+	    {
+		    $payslip = file_get_contents($_FILES['userImage']['tmp_name']);
+		    $imageProperties = getimageSize($_FILES['userImage']['tmp_name']);
 
-        $data = array( 
-        	
-        	'employeeID' => $this->input->post('employeeID'),
-	        /*'payslipname' => $this->input->post('payslipname'),
-*/	        'payslip' => $payslip
-	     
-        );  
+	        $data = array( 
+	        	
+	        	'employeeID' => $this->input->post('employeeID'),
+		        'payslip' => $payslip
+		     
+	        );  
 
 
-        $this->load->model('Uploadpayslip_model');  
-        $this->Uploadpayslip_model->addpayslip($data); 	             
-        $this->session->set_flashdata('employee', 'success');  	
-        redirect("Uploadpayslip");
+	        $this->load->model('Uploadpayslip_model');  
+	        $this->Uploadpayslip_model->addpayslip($data); 	             
+	        $this->session->set_flashdata('employee', 'success');  	
+	        redirect("Uploadpayslip");
 
 	    }
 	    
 
 	    public function fetch_single_id()  
-	      {  
-	           $output = array();  
-	           $this->load->model("Uploadpayslip_model");  
-	           $data = $this->Uploadpayslip_model->fetch_single_user($_POST["employeeID"]);  
-	           foreach($data as $r)  
-	           { 
-	                $output['employeeID'] = $r->employeeID;
-	           }  
-	           echo json_encode($output);  
-	      }
+	    {  
+           $output = array();  
+           $this->load->model("Uploadpayslip_model");  
+           $data = $this->Uploadpayslip_model->fetch_single_user($_POST["employeeID"]);  
+           foreach($data as $r)  
+           { 
+                $output['employeeID'] = $r->employeeID;
+           }  
+           echo json_encode($output);  
+	    }
 
-	      public function deletedata()
-	{
-		$this->load->model('Uploadpayslip_model');
-		$id = $this->input->get('id');
-		$this->Uploadpayslip_model->deleterecord($id);
-		redirect("Uploadpayslip");
-	}  
+
+	    public function deletedata()
+		{
+		   $this->load->model('Uploadpayslip_model');
+		   $id = $this->input->get('id');
+		   $this->Uploadpayslip_model->deleterecord($id);
+		   redirect("Uploadpayslip");
+		}
+
+		  
+
+		public function get_employeename(){
+        $departmentID = $this->input->post('id',TRUE);
+        $data = $this->Uploadpayslip_model->get_employee($departmentID)->result();
+        echo json_encode($data);
+    }
 }     
 ?>
+
+

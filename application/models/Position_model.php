@@ -11,7 +11,10 @@ class Position_model extends CI_Model
   public function getallposition()
     {
       $position = $this->db->query('
-            SELECT * FROM position 
+            SELECT *
+            FROM position
+            LEFT JOIN department
+            ON position.departmentID=department.departmentID
         ');
       $departmentID = $this->db->query('
             SELECT * FROM department 

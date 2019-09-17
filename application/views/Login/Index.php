@@ -56,7 +56,14 @@
                         <i class="mdi mdi-lock-outline text-warning"></i>
                       </span>
                     </div>
-                    <input type="password" class="form-control form-control-lg border-left-0" name="password" id="exampleInputPassword" placeholder="Password">                        
+                    <input type="password" class="form-control form-control-lg border-left-0 border-right-0 pwd" name="password" id="exampleInputPassword" placeholder="Password">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-left-0">
+                        <button class="btn btn-default reveal" style="line-height: 0;" type="button"><i class="mdi mdi-eye text-warning"></i></button>
+                      </span>
+                    </div>
+                    
+                   <!--  <button class="btn btn-default reveal" type="button"><i class="mdi mdi-eye text-warning"></i></button>  -->                       
                   </div>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">

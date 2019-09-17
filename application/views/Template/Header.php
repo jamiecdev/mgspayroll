@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="<?=base_url(); ?>assets/css/select2/select2.min.css">
   <link rel="stylesheet" href="<?=base_url(); ?>assets/css/jquery-toast-plugin/jquery.toast.min.css">
   <link rel="shortcut icon" href="<?=base_url(); ?>assets/images/favicon.png" />
+    <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/jquery-toast-plugin/jquery.toast.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/toastDemo.js"></script>

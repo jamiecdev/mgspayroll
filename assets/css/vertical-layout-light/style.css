@@ -11194,6 +11194,7 @@ fieldset:disabled .wizard > .actions a,
   color: #fff;
   background-color: #f29d56;
   border-color: #f29d56;
+  border-radius: 10px;
 }
 
 .btn-warning:hover {

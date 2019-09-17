@@ -10,42 +10,28 @@ class Uploadpayslip_model extends CI_Model
 
     public function getallposition()
         {
-           /* $payslipname = $this->db->query('
-            SELECT * FROM payslip 
-        ');*/
-            /*$payslip = $this->db->query('
-            SELECT * FROM payslip 
-        ');*/
-
-            $payslip = $this->db->query('
+          $payslip = $this->db->query('
             SELECT *
             FROM payslip
             INNER JOIN employee
             ON payslip.employeeID=employee.employeeID
         ');
-            /*$departmentID = $this->db->query('
-            SELECT * FROM department 
+    
+          $fullname = $this->db->query('
+            SELECT employeeID, firstname, middlename, lastname 
+            FROM employee
         ');
 
-*/
-           $fullname = $this->db->query('
-                SELECT employeeID, firstname, middlename, lastname FROM employee
-            ');
            $department = $this->db->query('
-            SELECT * FROM department 
+            SELECT * FROM department WHERE status = "Active" 
         ');
-
 
             $select = $fullname->result();
             $result1 = $payslip->result();
             $result2 = $department->result();
-            /*$result2 = $payslipname->result();*/
-            // $result3 = $departmentID->result();
             return array('payslip' => $result1
               , 'fullname' => $select
               , 'department' => $result2
-                /*, 'payslipname' => $result2 */
-                // 'departmentID' => $result3
             );
 
         }
@@ -61,12 +47,19 @@ class Uploadpayslip_model extends CI_Model
            $this->db->where("employeeID", $employeeID);  
            $query=$this->db->get('employee');  
            return $query->result(); 
-       }
+        }
 
-      public function deleterecord($id)
-  {
-  $this->db->query("delete from payslip where payslipID ='".$id."'");
-  }
+    public function deleterecord($id)
+        {
+           $this->db->query("delete from payslip where payslipID ='".$id."'");
+        }
+
+
+    function get_employee($departmentID){
+        $query = $this->db->get_where('employee', array('departmentID' => $departmentID));
+        return $query;
+    }
+
 }
 ?>
 

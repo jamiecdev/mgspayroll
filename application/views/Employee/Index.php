@@ -175,7 +175,7 @@
                             <?php
                             foreach($results['department'] as $department)
                             {
-                            echo '<option value="'.$department->description.'">'.$department->description.'</option>';
+                            echo '<option value="'.$department->departmentID.'">'.$department->description.'</option>';
                             }
                             ?>  
                           </select>
@@ -186,7 +186,7 @@
                             <?php
                             foreach($results['position'] as $position)
                             {
-                            echo '<option value="'.$position->description.'">'.$position->description.'</option>';
+                            echo '<option value="'.$position->posdescription.'">'.$position->posdescription.'</option>';
                             }
                             ?>
                           </select>

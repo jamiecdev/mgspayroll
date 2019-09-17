@@ -1,3 +1,4 @@
+  <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/vendors/js/vendor.bundle.base.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/off-canvas.js"></script>
@@ -15,6 +16,10 @@
   <script src="<?php echo base_url(); ?>assets/js/bt-maxLength.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/select2/select2.full.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/alerts.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/avgrund.js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendors/sweetalert/sweetalert.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendors/jquery.avgrund/jquery.avgrund.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/file-upload.js"></script>
 
 
 </body>
@@ -22,11 +27,56 @@
     $(document).ready(function(){
       
 
-      $('.modal').on("hidden.bs.modal", function() {
+      $('#addModal').on("hidden.bs.modal", function() {
         $(this).find('form').trigger('reset');
         $('.modal-title').text("New Employee");  
          $('#employeeID').val("");  
          $('#action').val("Save");  
+      });
+
+      $('#setupdepartmentModal').on("hidden.bs.modal", function() {
+        $(this).find('form').trigger('reset');
+        $('.modal-title').text("New Department");  
+         $('#departmentID').val("");  
+         $('#action').val("Save");  
+      });
+
+      $('#setuppositionModal').on("hidden.bs.modal", function() {
+        $(this).find('form').trigger('reset');
+        $('.modal-title').text("New Position");  
+         $('#positionID').val("");  
+         $('#action').val("Save");  
+      });
+
+      $('#department').change(function(){ 
+                var id=$(this).val();
+                $.ajax({
+                    url : "<?php echo site_url('Product/get_employeename');?>",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                         
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].employeeID+'>'+data[i].firstname+' '+data[i].lastname+'</option>';
+                        }
+                        $('#employee').html(html);
+ 
+                    }
+                });
+                return false;
+            }); 
+
+      $(".reveal").on('click',function() {
+          var $pwd = $(".pwd");
+          if ($pwd.attr('type') === 'password') {
+              $pwd.attr('type', 'text');
+          } else {
+              $pwd.attr('type', 'password');
+          }
       });
 
       $('.department-edit').unbind('click').bind('click', function(){  
@@ -40,7 +90,9 @@
               success:function(data)  
               {  
                    $('#setupdepartmentModal').modal('show');
-                   $('#description').val(data.description);  
+                   $('#description').val(data.description); 
+                   $('#status').val(data.status);
+                   $("[value='Activee']").prop('checked', true);
                    $('.modal-title').text("Update Department");  
                    $('#departmentID').val(departmentID);  
                    $('#action').val("Update");  
@@ -59,7 +111,7 @@
               success:function(data)  
               {  
                    $('#setuppositionModal').modal('show');
-                   $('#description').val(data.description);  
+                   $('#posdescription').val(data.posdescription);  
                    $('.modal-title').text("Update Position");  
                    $('#positionID').val(positionID);  
                    $('#action').val("Update");  
@@ -102,32 +154,11 @@
                    $('#philhealthnumber').val(data.philhealthnumber);
                    $('#username').val(data.username);
                    $('#password').val(data.password);
+                   /*$("[value='2']").prop('checked', true);*/
                    $('#role_id').val(data.role_id);
                    $('#pagibignumber').val(data.pagibignumber); 
                    $('.modal-title').text("Update Employee");  
                    $('#employeeID').val(employeeID);  
-                   $('#action').val("Update");  
-              }  
-         })  
-      });
-
-      
-
-      $('.upload').click(function(){  
-                  
-           var employeeID = $(this).attr("id");  
-         $.ajax({  
-              url:"<?php echo base_url(); ?>Upload/fetch_single_id",  
-              method:"POST",  
-              data:{employeeID:employeeID},  
-              dataType:"json",  
-              success:function(data)  
-              {  
-                   $('#setupleaveModal').modal('show');
-                   $('#typeofleave').val(data.typeofleave);  
-                   $('#numberofdays').val(data.numberofdays);   
-                   $('.modal-title').text("Update Leave");  
-                   $('#leaveID').val(employeeID);  
                    $('#action').val("Update");  
               }  
          })  

@@ -23,19 +23,19 @@ class Position extends CI_Controller {
 	                $data = array(
 
 	               		'departmentID' => $this->input->post('departmentID'),  
-	                    'description' => $this->input->post('description')
+	                    'posdescription' => $this->input->post('posdescription')
 	                );  
 	                $this->load->model('Position_model');  
 	                $this->Position_model->addposition($data); 
 	                $this->session->set_flashdata('position', 'pos');  
-	                redirect("Position/index");
+	                redirect("Position");
 
 	           }  
 	           if($_POST["action"] == "Update")  
 	           {   
 	                $updated_data = array( 
 	                	'departmentID' => $this->input->post('departmentID'),   
-	                    'description' => $this->input->post('description')
+	                    'posdescription' => $this->input->post('posdescription')
 	                );  
 	                $this->load->model('Position_model');  
 	                $this->Position_model->update($this->input->post("positionID"), $updated_data); 
@@ -51,7 +51,7 @@ class Position extends CI_Controller {
 	           $data = $this->Position_model->fetch_single_position($_POST["positionID"]);  
 	           foreach($data as $r)  
 	           { 
-	                $output['description'] = $r->description;
+	                $output['posdescription'] = $r->posdescription;
 	           }  
 	           echo json_encode($output);  
 	      }  

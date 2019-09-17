@@ -7,64 +7,7 @@
         <li class="breadcrumb-item active" aria-current="page"><span><i class="mdi mdi-account-multiple-outline"></i> Upload Payslip</span></li>
       </ol>
     </nav>
-    <!-- <div class="col-12 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Upload Payslip</h4>
-                  <form class="form-sample" id="commentForm" method="post" enctype="multipart/form-data" action="<?php echo site_url('Uploadpayslip/addpayslip'); ?>">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Fullname</label>
-                          <select class="form-control select2 col-sm-9" name="employeeID" id="employeeID">
-                          <?php
-                          foreach($results['fullname'] as $user)
-                          {
-                            echo '<option value="'.$user->employeeID.'">'.$user->firstname. ' '.$user->lastname.'</option>';
-                          }
-                          ?>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Last Name</label>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row"> 
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Gender</label>
-                          <div class="col-sm-9">
-                            <select class="form-control">
-                              <option>Male</option>
-                              <option>Female</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Date of Birth</label>
-                          <div class="col-sm-9">
-                            <input class="form-control" placeholder="dd/mm/yyyy"/>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-        <input type="submit" name="action" id="action" class="btn btn-primary" value="Upload" /> 
-        </div>
-                        </form>
-                        </div>
-                      </div>
-                    </div>  -->           
-        
-    <!-- DataTable -->
+    
     <div class="row grid-margin">
                   <div class="col-lg-12">
               <div class="card">
@@ -75,18 +18,21 @@
                   <div class="form-group">
                         <div class="row">
                           <div class="col">
-                          <label for="gender">Department</label>
-                          <select class="form-control select2" name="departmentID" style="width: 100%;">
-                            <?php
-                            foreach($results['department'] as $department)
-                            {
-                            echo '<option value="'.$department->departmentID.'">'.$department->description.'</option>';
-                            }
-                            ?>  
-                          </select>
+                          <label for="departmentID">Department</label>
+                         <select class="form-control select2" name="departmentID" id="department" required>
+                        <option value="">No Selected</option>
+                        <?php foreach($results['department'] as $row):?>
+                        <option value="<?php echo $row->departmentID;?>"><?php echo $row->description;?></option>
+                        <?php endforeach;?>
+                    </select>
                         </div>
                         <div class="col">
                           <label>Employee Name</label>
+                            <select class="form-control select2" id="employee" name="employeeID" required>
+                        <option>No Selected</option>
+ 
+                    </select>
+                          <!-- <label>Employee Name</label>
                           <select class="form-control select2" name="employeeID" id="employeeID" style="width: 100%;">
                           <?php
                           foreach($results['fullname'] as $user)
@@ -94,13 +40,27 @@
                             echo '<option value="'.$user->employeeID.'">'.$user->firstname. ' '.$user->lastname.'</option>';
                           }
                           ?>
-                          </select>
+                          </select> -->
                         </div>
                         
-                        <div class="col">
+                        <!-- <div class="col">
                           <label for="payslip">Payslip</label>
                           <input type="file" class="form-control" name="userImage" id="payslip" value="Choose File" />
+                        </div> -->
+
+
+                        <div class="col form-group">
+                          <label>Payslip</label>
+                          <input type="file" name="userImage" id="payslip" class="file-upload-default" required>
+                          <div class="input-group col-xs-12">
+                            <input type="text" class="form-control file-upload-info" disabled>
+                            <span class="input-group-append">
+                              <button class="file-upload-browse btn btn-warning" type="button">Choose File</button>
+                            </span>
+                          </div>
                         </div>
+
+
                         </div>
                   </div>
                   <div class="modal-footer">
@@ -127,8 +87,6 @@
                 <span><?php if($this->session->flashdata('employee')=="success") echo '<script type="text/javascript"> showSuccessToast() </script>';?></span>
                 <thead>
                   <tr>
-                      <!-- <th>Employee Name</th> -->
-                      <!-- <th>Employee Name</th> -->
                       <th>Employee Name</th>
                       <th>Position</th>
                       <th>Department</th>
@@ -142,11 +100,10 @@
                         foreach ($results['payslip'] as $frow) {
 
                           echo '<tr>';
-                          /*echo '<td>'.$frow->employeename.'</td>';*/
                           echo '<td>'.$frow->firstname.' '.$frow->lastname.'</td>';
                           echo '<td>'.$frow->position.'</td>';
                           echo '<td>'.$frow->department.'</td>';
-                          echo '<td>'.$frow->datecreated.'</td>';
+                          echo '<td>'.$frow->payslipuploaded.'</td>';
                           echo '<td><a class="btn btn-outline-warning btn-fw" style="margin-right: 10px;" href="Viewpayslip/preview?id='.$frow->payslipID.'" >View</a>
                           <a class="btn btn-outline-danger btn-fw" style="margin-right: 50px;" href="Uploadpayslip/deletedata?id='.$frow->payslipID.'" >Delete</a></td>';
 
@@ -161,11 +118,15 @@
     </div>
   </div>
 </div>
+
  <script>
   $(function () {
     $('.select2').select2();
   });
 </script>
+
+<!-- <button class="btn btn-outline-success" onclick="showSwal(\'warning-message-and-cancel\')">Click here!</button> -->
+
 <!-- <button class="btn btn-outline-primary" onclick="showSwal("warning-message-and-cancel")">Click here!</button> -->
 
 <!-- <a class="btn btn-outline-danger btn-fw" onclick="showSwal('warning-message-and-cancel')" style="margin-right: 50px;" href="Uploadpayslip/deletedata?id='.$frow->payslipID.'" >Delete</a>
