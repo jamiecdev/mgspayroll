@@ -10,6 +10,7 @@
   <title>Mercury Global Services | Payroll Login</title>
   <!-- base:css -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/vendors/mdi/css/materialdesignicons.min.css">
+<!--     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
@@ -48,24 +49,32 @@
                     <input type="text" class="form-control form-control-lg border-left-0" name="username" id="exampleInputEmail" placeholder="Username">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword">Password</label>
-                  <div class="input-group">
+              
+
+                 <div class="form-group">
+                  <label>Password</label>
+                  <div class="input-group" id="show_hide_password">
                     <div class="input-group-prepend bg-transparent">
                       <span class="input-group-text bg-transparent border-right-0">
                         <i class="mdi mdi-lock-outline text-warning"></i>
                       </span>
                     </div>
-                    <input type="password" class="form-control form-control-lg border-left-0 border-right-0 pwd" name="password" id="exampleInputPassword" placeholder="Password">
+                    <input class="form-control form-control-lg border-left-0 border-right-0 pwd" name="password" type="password" placeholder="Password">
                     <div class="input-group-prepend bg-transparent">
                       <span class="input-group-text bg-transparent border-left-0">
-                        <button class="btn btn-default reveal" style="line-height: 0;" type="button"><i class="mdi mdi-eye text-warning"></i></button>
+                      <a href=""><i class="mdi mdi-eye text-warning"></i></a>
                       </span>
                     </div>
-                    
-                   <!--  <button class="btn btn-default reveal" type="button"><i class="mdi mdi-eye text-warning"></i></button>  -->                       
                   </div>
                 </div>
+
+
+                <!-- <div class="form-group">
+
+      <label>Password:</label>
+      
+      <input type="password" id="password" name="password" class="form-control" data-toggle="password">
+    </div> -->
                 <div class="my-2 d-flex justify-content-between align-items-center">
                 
                   
@@ -99,7 +108,28 @@
   <script src="<?php echo base_url();?>assets/js/template.js"></script>
   <script src="<?php echo base_url();?>assets/js/settings.js"></script>
   <script src="<?php echo base_url();?>assets/js/todolist.js"></script>
+   <script src="<?php echo base_url();?>assets/js/bootstrap-show-password.min.js"></script>
+
   <!-- endinject -->
 </body>
 </html>
 
+<script type="text/javascript">
+  $(document).ready(function() {
+    
+
+    $("#show_hide_password a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "mdi-eye" );
+            $('#show_hide_password i').removeClass( "mdi-eye-off" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "mdi-eye" );
+            $('#show_hide_password i').addClass( "mdi-eye-off" );
+        }
+    });
+    
+});
+</script>

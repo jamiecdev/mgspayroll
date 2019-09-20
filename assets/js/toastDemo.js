@@ -31,7 +31,7 @@
     resetToastPosition();
     $.toast({
       heading: 'Success',
-      text: "Department has been successfully added!",
+      text: "Department has been successfully saved!",
       showHideTransition: 'slide',
       icon: 'success',
       loaderBg: '#ffffff',
@@ -44,7 +44,7 @@
     resetToastPosition();
     $.toast({
       heading: 'Success',
-      text: "Position has been successfully added!",
+      text: "Position has been successfully saved!",
       showHideTransition: 'slide',
       icon: 'success',
       loaderBg: '#ffffff',
@@ -57,7 +57,7 @@
     resetToastPosition();
     $.toast({
       heading: 'Success',
-      text: "Employee has been successfully added!",
+      text: "Employee has been successfully saved!",
       showHideTransition: 'slide',
       icon: 'success',
       loaderBg: '#ffffff',

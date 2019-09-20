@@ -97,20 +97,19 @@
                         <div class="row">
                         <div class="col">
                           <label for="firstname">First Name</label>
-                          <input id="firstname" type="text" name="firstname" class="form-control"  required>
+                          <input id="firstname" type="text" name="firstname" class="form-control input" autocomplete="off"  required>
                         </div>
                         <div class="col">
                           <label for="middlename">Middle Name</label>
-                          <input id="middlename" type="text" name="middlename" class="form-control">
+                          <input id="middlename" type="text" name="middlename" class="form-control input" autocomplete="off">
                         </div>
                         <div class="col">
                           <label for="lastname">Last Name</label>
-                          <input id="lastname" type="text" name="lastname" class="form-control" required>
+                          <input id="lastname" type="text" name="lastname" class="form-control input" autocomplete="off" required>
                         </div>
                         <div class="col">
                           <label for="gender">Gender</label>
                           <select class="form-control" name="gender" required>
-                            <option></option>
                             <option>Male</option>
                             <option>Female</option>
                           </select>
@@ -122,19 +121,19 @@
                         <div class="row">
                         <div class="col">
                           <label for="housenumber">Unit/House No.</label>
-                          <input id="housenumber" type="text" name="housenumber" class="form-control">
+                          <input id="housenumber" type="text" name="housenumber" class="form-control input" autocomplete="off">
                         </div>
                         <div class="col">
                           <label for="streetname">Building/Street Name</label>
-                          <input id="streetname" type="text" name="streetname" class="form-control" required>
+                          <input id="streetname" type="text" name="streetname" class="form-control input" autocomplete="off" required>
                         </div>
                         <div class="col">
                           <label for="barangay">Barangay</label>
-                          <input id="barangay" type="text" name="barangay" class="form-control" required>
+                          <input id="barangay" type="text" name="barangay" class="form-control input" autocomplete="off" required>
                         </div>
                         <div class="col">
                           <label for="city">City/Municipality</label>
-                          <input id="city" type="text" name="city" class="form-control" required>
+                          <input id="city" type="text" name="city" class="form-control input" autocomplete="off" required>
                         </div>
                         </div>
                       </div>
@@ -147,7 +146,7 @@
                         </div>
                         <div class="col">
                           <label for="contactinfo">Contact No.</label>
-                          <input id="contactinfo" type="text" name="contactinfo" class="form-control" required>
+                          <input id="contactinfo" type="text" name="contactinfo" class="form-control" autocomplete="off" required>
                         </div>
                         <div class="col">
                           <label for="civilstatus">Civil Status</label>
@@ -158,7 +157,7 @@
                         </div>
                           <div class="col">
                           <label for="citizenship">Citizenship</label>
-                          <input id="citizenship" type="text" name="citizenship" class="form-control" required>
+                          <input id="citizenship" type="text" name="citizenship" class="form-control input" autocomplete="off" required>
                         </div>
                         </div>
                       </div>
@@ -209,11 +208,11 @@
                   <form class="forms-group">
                     <div class="form-group">
                       <label for="username">Username</label>
-                      <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                      <input type="text" class="form-control input" id="username" name="username" placeholder="Username" autocomplete="off">
                     </div>
                     <div class="form-group">
                       <label for="password">Password</label>
-                      <input type="text" class="form-control" id="password" name="password" placeholder="Password">
+                      <input type="text" class="form-control input" id="password" name="password" placeholder="Password" autocomplete="off">
                     </div>
                     <!-- <div class="form-group">
                       <label for="role">Role</label>
@@ -236,15 +235,15 @@
                         <div class="row">
                         <div class="col">
                           <label for="basicsalary">Basic Salary</label>
-                          <input id="basicsalary" type="text" name="basicsalary" class="form-control"  required>
+                          <input id="basicsalary" type="number" name="basicsalary" class="form-control input" autocomplete="off"  required>
                         </div>
                         <div class="col">
                           <label for="dailyrate">Daily Rate</label>
-                          <input id="dailyrate" type="text" name="dailyrate" class="form-control">
+                          <input id="dailyrate" type="number" name="dailyrate" class="form-control input" autocomplete="off" required>
                         </div>
                         <div class="col">
                           <label for="allowance">Allowance</label>
-                          <input id="allowance" type="text" name="allowance" class="form-control" required>
+                          <input id="allowance" type="number" name="allowance" class="form-control input" autocomplete="off" required>
                         </div>
                         </div>
                       </div>
@@ -253,11 +252,11 @@
                         <div class="row">
                         <div class="col">
                           <label for="tinnumber">Tin No.</label>
-                          <input id="tinnumber" type="text" name="tinnumber" class="form-control"  required>
+                          <input id="tinnumber" type="text" name="tinnumber" class="form-control input" autocomplete="off"  required>
                         </div>
                         <div class="col">
                           <label for="sssnumber">SSS No.</label>
-                          <input id="sssnumber" type="text" name="sssnumber" class="form-control">
+                          <input id="sssnumber" type="text" name="sssnumber" class="form-control input" autocomplete="off">
                         </div>
                         </div>
                       </div>
@@ -266,11 +265,11 @@
                         <div class="row">
                         <div class="col">
                           <label for="philhealthnumber">Philhealth No.</label>
-                          <input id="philhealthnumber" type="text" name="philhealthnumber" class="form-control"  required>
+                          <input id="philhealthnumber" type="text" name="philhealthnumber" class="form-control input" autocomplete="off"  required>
                         </div>
                         <div class="col">
                           <label for="pagibignumber">Pag-IBIG MID No.</label>
-                          <input id="pagibignumber" type="text" name="pagibignumber" class="form-control">
+                          <input id="pagibignumber" type="text" name="pagibignumber" class="form-control input" autocomplete="off">
                         </div>
                         </div>
                       </div>

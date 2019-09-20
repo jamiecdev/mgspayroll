@@ -5,6 +5,7 @@
                 echo '<script type="text/javascript"> showWelcomeToast("'.$this->session->userdata('userdata')['fullname'].'")</script>';
               ?>
             </span>
+            
           <div class="row">
             <div class="col-12">
               <div class="card">

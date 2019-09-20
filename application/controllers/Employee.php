@@ -19,7 +19,7 @@
 
 
 	    public function employee_action(){  
-	           if(($_POST["action"] == "Add"))  
+	           if($_POST["action"] == "Add")  
 	           {  
 	                $data = array( 
 	                	
@@ -58,7 +58,7 @@
 	                redirect("Employee");
 
 	           }  
-	           if(($_POST["action"] == "Update")) 
+	           if($_POST["action"] == "Update")
 	           {   
 	                $updated_data = array(
 

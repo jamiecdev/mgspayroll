@@ -6,8 +6,7 @@
   <script src="<?php echo base_url(); ?>assets/js/template.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/settings.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/todolist.js"></script>
-  <script src="<?php echo base_url(); ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
-  <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+
   <script src="<?php echo base_url(); ?>assets/js/data-table.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/modal-demo.js"></script>
   <script src="<?php echo base_url(); ?>assets/vendors/jquery-validation/jquery.validate.min.js"></script>
@@ -20,32 +19,79 @@
   <script src="<?php echo base_url(); ?>assets/vendors/sweetalert/sweetalert.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/vendors/jquery.avgrund/jquery.avgrund.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/file-upload.js"></script>
-
-
+  <script src="<?php echo base_url(); ?>assets/js/jquery.inputmask.bundle.js"></script>
+ <script src="<?php echo base_url(); ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/jquery.mask.min.js"></script>
 </body>
   <script  type="text/javascript">  
     $(document).ready(function(){
+      // $('.input').on('keypress', function(e) {
+      //   console.log("haha"+$(this).val());
+      //   checker = $(this).val();
+      //   // if ($(this).val() == ""){
+      //   //   checker = false;
+      //   // }
+      //   //   if (e.which == 32)
+      //   //    return false;
+      //   // }
+      // });
+      var checker;
+      var checker2;
+      $('.input').keyup(function(e){
+        // console.log("input:"+$(this).val())
+        // if($(this).val() != ""){
+        //   checker = false;
+        // }
+
+        checker = e.which;
+        if(e.target.selectionStart === 0){
+           if(e.which == 32){
+              return false;
+           }
+        }
+      });
+
+
+      $('.input').keydown(function(e){
+        
+        checker2 = $(this).val();
+        console.log(checker2.substr(-1)==" ");
+        if((e.which==32 && e.target.selectionStart===0) || checker2.substr(-1)==" "){
+
+          // if(e.which == 32){
+            return false;
+          // }
+        }
+        else{
+          return true;
+        }
+
+      });
+
+
+       $('#contactinfo').mask('0000-000-0000');
       
 
       $('#addModal').on("hidden.bs.modal", function() {
         $(this).find('form').trigger('reset');
         $('.modal-title').text("New Employee");  
          $('#employeeID').val("");  
-         $('#action').val("Save");  
+         $('#action').val("Add");  
       });
 
       $('#setupdepartmentModal').on("hidden.bs.modal", function() {
         $(this).find('form').trigger('reset');
-        $('.modal-title').text("New Department");  
-         $('#departmentID').val("");  
-         $('#action').val("Save");  
+        $('.modal-title').text("New Department"); 
+        $('#departmentID').val("");  
+        $('#action').val("Add");  
       });
 
       $('#setuppositionModal').on("hidden.bs.modal", function() {
         $(this).find('form').trigger('reset');
         $('.modal-title').text("New Position");  
          $('#positionID').val("");  
-         $('#action').val("Save");  
+         $('#action').val("Add");  
       });
 
       $('#department').change(function(){ 
@@ -79,8 +125,7 @@
           }
       });
 
-      $('.department-edit').unbind('click').bind('click', function(){  
-                  
+        $('.table').on('click','.department-edit',function () {                  
            var departmentID = $(this).attr("id");  
          $.ajax({  
               url:"<?php echo base_url(); ?>Department/fetch_single_dept",  
@@ -91,8 +136,6 @@
               {  
                    $('#setupdepartmentModal').modal('show');
                    $('#description').val(data.description); 
-                   $('#status').val(data.status);
-                   $("[value='Activee']").prop('checked', true);
                    $('.modal-title').text("Update Department");  
                    $('#departmentID').val(departmentID);  
                    $('#action').val("Update");  
@@ -100,7 +143,7 @@
          })  
       });
 
-      $('.position-edit').unbind('click').bind('click', function(){  
+      $('.table').on('click','.position-edit',function () {        
                   
            var positionID = $(this).attr("id");  
          $.ajax({  
@@ -119,7 +162,8 @@
          })  
       });
 
-      $('.employee-edit').unbind('click').bind('click', function(){  
+
+      $('.table').on('click','.employee-edit',function () { 
                   
            var employeeID = $(this).attr("id");  
          $.ajax({  
@@ -134,7 +178,8 @@
                    $('#firstname').val(data.firstname);
                    $('#middlename').val(data.middlename); 
                    $('#lastname').val(data.lastname);
-                   $('#gender').val(data.gender); 
+                   $('#gender').find(data.gender).text();
+                   /*$('#gender').val(data.gender); */
                    $('#housenumber').val(data.housenumber);
                    $('#streetname').val(data.streetname);
                    $('#barangay').val(data.barangay);

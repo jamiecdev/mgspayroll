@@ -63,12 +63,12 @@
       <div class="modal-body">
         <div class="form-group">
         <label for="description">Department Name</label>
-        <input type="text" class="form-control" id="description" name="description" required>
+        <input type="text" class="form-control input" id="description" name="description" autocomplete="off" required>
         </div>
         <div class="form-check form-check-flat form-check-primary">
           <label class="form-check-label">
             <input type="hidden" name="status" id="status" value="Inactive">
-            <input type="checkbox" name="status" id="status" value="Active" <?php echo ($r->status == 'Active' ? 'checked' : ' '); ?>>
+            <input type="checkbox" name="status" id="status" value="Active" >
            Active
           </label>
         </div>
@@ -85,4 +85,5 @@
   $(function () {
     $('.select2').select2();
   });
+
 </script>

@@ -89,7 +89,7 @@
 				else
 				{
 
-					$this->session->set_flashdata('error', 'Invalid Username and password');
+					$this->session->set_flashdata('error', 'Invalid Username or password');
 					redirect(base_url());
 				}
 			}
