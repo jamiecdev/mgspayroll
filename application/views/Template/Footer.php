@@ -19,77 +19,64 @@
   <script src="<?php echo base_url(); ?>assets/vendors/sweetalert/sweetalert.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/vendors/jquery.avgrund/jquery.avgrund.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/file-upload.js"></script>
-  <script src="<?php echo base_url(); ?>assets/js/jquery.inputmask.bundle.js"></script>
  <script src="<?php echo base_url(); ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/jquery.mask.min.js"></script>
 </body>
   <script  type="text/javascript">  
     $(document).ready(function(){
-      // $('.input').on('keypress', function(e) {
-      //   console.log("haha"+$(this).val());
-      //   checker = $(this).val();
-      //   // if ($(this).val() == ""){
-      //   //   checker = false;
-      //   // }
-      //   //   if (e.which == 32)
-      //   //    return false;
-      //   // }
-      // });
-      var checker;
-      var checker2;
-      $('.input').keyup(function(e){
-        // console.log("input:"+$(this).val())
-        // if($(this).val() != ""){
-        //   checker = false;
-        // }
-
-        checker = e.which;
-        if(e.target.selectionStart === 0){
-           if(e.which == 32){
-              return false;
-           }
-        }
-      });
-
-
+      var ctr=0;
+    
       $('.input').keydown(function(e){
         
-        checker2 = $(this).val();
-        console.log(checker2.substr(-1)==" ");
-        if((e.which==32 && e.target.selectionStart===0) || checker2.substr(-1)==" "){
+    
+          if(e.target.selectionStart === 0){
+            if(e.which == 32){
+              return false;
+            }
+          }
 
-          // if(e.which == 32){
-            return false;
-          // }
-        }
-        else{
-          return true;
-        }
+          if(e.which == 32){
+            ctr+=1
+          }
+          else{
+            ctr=0;
+          }
 
+          if(ctr>1){
+            e.preventDefault();
+          }
+
+          
       });
 
 
-       $('#contactinfo').mask('0000-000-0000');
+      $('#contactinfo').mask('0000-000-0000');
       
 
       $('#addModal').on("hidden.bs.modal", function() {
         $(this).find('form').trigger('reset');
-        $('.modal-title').text("New Employee");  
-         $('#employeeID').val("");  
-         $('#action').val("Add");  
+        $('.modal-title').text("New Employee");
+        $("label.error").hide();
+        $(".error").removeClass("error");
+        $('#employeeID').val("");  
+        $('#action').val("Add");  
       });
 
       $('#setupdepartmentModal').on("hidden.bs.modal", function() {
         $(this).find('form').trigger('reset');
-        $('.modal-title').text("New Department"); 
+        $('.modal-title').text("New Department");
+        $("label.error").hide();
+        $(".error").removeClass("error"); 
         $('#departmentID').val("");  
         $('#action').val("Add");  
       });
 
       $('#setuppositionModal').on("hidden.bs.modal", function() {
         $(this).find('form').trigger('reset');
-        $('.modal-title').text("New Position");  
+        $('.modal-title').text("New Position");
+        $("label.error").hide();
+        $(".error").removeClass("error");  
          $('#positionID').val("");  
          $('#action').val("Add");  
       });

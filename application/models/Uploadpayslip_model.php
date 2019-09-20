@@ -15,6 +15,8 @@ class Uploadpayslip_model extends CI_Model
             FROM payslip
             INNER JOIN employee
             ON payslip.employeeID=employee.employeeID
+            INNER JOIN department
+            ON employee.departmentID=department.departmentID
         ');
     
           $fullname = $this->db->query('

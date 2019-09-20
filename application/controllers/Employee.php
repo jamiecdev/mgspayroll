@@ -36,7 +36,7 @@
 				        'civilstatus' => $this->input->post('civilstatus'),
 				        'citizenship' => $this->input->post('citizenship'),
 				        'hireddate' => $this->input->post('hireddate'),
-				        'department' => $this->input->post('department'),
+				        'departmentID' => $this->input->post('departmentID'),
 				        'position' => $this->input->post('position'),
 				        'status' => $this->input->post('status'), 
 				        'basicsalary' => $this->input->post('basicsalary'),
@@ -75,7 +75,7 @@
 				        'civilstatus' => $this->input->post('civilstatus'),
 				        'citizenship' => $this->input->post('citizenship'),
 				        'hireddate' => $this->input->post('hireddate'),
-				        'department' => $this->input->post('department'),
+				        'departmentID' => $this->input->post('departmentID'),
 				        'position' => $this->input->post('position'),
 				        'status' => $this->input->post('status'), 
 				        'basicsalary' => $this->input->post('basicsalary'),
@@ -117,7 +117,7 @@
 	                $output['civilstatus'] = $r->civilstatus; 
 	                $output['citizenship'] = $r->citizenship;
 	                $output['hireddate'] = $r->hireddate;
-	                $output['department'] = $r->department;
+	                $output['departmentID'] = $r->departmentID;
 	                $output['position'] = $r->position;
 	                $output['status'] = $r->status; 
 	                $output['basicsalary'] = $r->basicsalary;

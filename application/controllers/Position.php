@@ -39,7 +39,7 @@ class Position extends CI_Controller {
 	                );  
 	                $this->load->model('Position_model');  
 	                $this->Position_model->update($this->input->post("positionID"), $updated_data); 
-	                $this->session->set_flashdata('department', 'success'); 
+	                $this->session->set_flashdata('position', 'pos'); 
 	                redirect("Position"); 
 	           }  
 	      }

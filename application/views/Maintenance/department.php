@@ -61,7 +61,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="form-group">
+        <div>
         <label for="description">Department Name</label>
         <input type="text" class="form-control input" id="description" name="description" autocomplete="off" required>
         </div>

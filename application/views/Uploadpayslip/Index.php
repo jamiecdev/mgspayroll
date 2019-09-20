@@ -102,7 +102,7 @@
                           echo '<tr>';
                           echo '<td>'.$frow->firstname.' '.$frow->lastname.'</td>';
                           echo '<td>'.$frow->position.'</td>';
-                          echo '<td>'.$frow->department.'</td>';
+                          echo '<td>'.$frow->description.'</td>';
                           echo '<td>'.$frow->payslipuploaded.'</td>';
                           echo '<td><a class="btn btn-outline-warning btn-fw" style="margin-right: 10px;" href="Viewpayslip/preview?id='.$frow->payslipID.'" >View</a>
                           <a class="btn btn-outline-danger btn-fw" style="margin-right: 50px;" href="Uploadpayslip/deletedata?id='.$frow->payslipID.'" >Delete</a></td>';

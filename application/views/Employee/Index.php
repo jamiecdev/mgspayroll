@@ -170,7 +170,7 @@
                         </div>
                         <div class="col">
                           <label for="gender">Department</label>
-                          <select class="form-control select2" name="department" style="width: 100%;">
+                          <select class="form-control select2" name="departmentID" style="width: 100%;">
                             <?php
                             foreach($results['department'] as $department)
                             {
@@ -231,7 +231,7 @@
 
                     <!-- PAYROLL DETAILS -->
                     <div class="tab-pane fade" id="pills-detail" role="tabpanel" aria-labelledby="pills-detail-tab">
-                      <div class="form-group">
+                      <div>
                         <div class="row">
                         <div class="col">
                           <label for="basicsalary">Basic Salary</label>
@@ -248,7 +248,7 @@
                         </div>
                       </div>
 
-                      <div class="form-group">
+                      <div>
                         <div class="row">
                         <div class="col">
                           <label for="tinnumber">Tin No.</label>
@@ -261,7 +261,7 @@
                         </div>
                       </div>
 
-                      <div class="form-group">
+                      <div>
                         <div class="row">
                         <div class="col">
                           <label for="philhealthnumber">Philhealth No.</label>
