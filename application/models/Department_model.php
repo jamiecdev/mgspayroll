@@ -16,7 +16,7 @@ class Department_model extends CI_Model
          if($query->num_rows() == 0){
         $data = array(
             'description' => $this->input->post('description'),
-            'status' => $this->input->post('status')
+            'departmentstatus' => $this->input->post('departmentstatus')
              );
             $this->db->insert('department', $data);
         }
@@ -46,7 +46,7 @@ class Department_model extends CI_Model
             if($query->num_rows() == 0){
                 $data1 = array(
                 'description' => $this->input->post('description'),
-                'status' => $this->input->post('status')
+                'departmentstatus' => $this->input->post('departmentstatus')
              );
                if($data1 == 0) {
               $cond = "5";

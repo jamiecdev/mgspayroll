@@ -37,7 +37,7 @@
 
                           echo '<tr>';
                           echo '<td>'.$r->description.'</td>';
-                          echo '<td><label class="badge badge-success">'.$r->status.'</label></td>'; 
+                          echo '<td><label class="badge badge-success">'.$r->departmentstatus.'</label></td>'; 
                           echo '<td><button type="button" name="Update" id="'.$r->departmentID.'" class="btn btn-outline-warning department-edit" data-target="#setupdepartmentModal">View</button></td>' ;
                         }
                       ?>
@@ -68,8 +68,8 @@
         </div>
         <div class="form-check form-check-flat form-check-primary">
           <label class="form-check-label">
-            <input type="hidden" name="status" id="status" value="Inactive">
-            <input type="checkbox" name="status" id="status" value="Active" >
+            <input type="hidden" name="departmentstatus" id="departmentstatus" value="Inactive">
+            <input type="checkbox" name="departmentstatus" id="departmentstatus" value="Active" >
            Active
           </label>
         </div>

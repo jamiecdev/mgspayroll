@@ -18,9 +18,9 @@
   <script src="<?php echo base_url(); ?>assets/vendors/sweetalert/sweetalert.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/vendors/jquery.avgrund/jquery.avgrund.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/file-upload.js"></script>
- <script src="<?php echo base_url(); ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/jquery.mask.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/jquery.mask.min.js"></script>
 </body>
   <script  type="text/javascript">  
     $(document).ready(function(){
@@ -68,6 +68,8 @@
       $('#addModal').on("hidden.bs.modal", function() {
         $(this).find('form').trigger('reset');
         $('.modal-title').text("New Employee");
+        $("div.has-danger").hide();
+        $(".has-danger").removeClass("has-danger");
         $("label.error").hide();
         $(".error").removeClass("error");
         $('#employeeID').val("");  
@@ -112,6 +114,7 @@
               {  
                    $('#setupdepartmentModal').modal('show');
                    $('#description').val(data.description); 
+                   $("input[value='" + data.departmentstatus + "']").prop('checked', true); 
                    $('.modal-title').text("Update Department");  
                    $('#departmentID').val(departmentID);  
                    $('#action').val("Update");  
@@ -130,6 +133,7 @@
               success:function(data)  
               {  
                    $('#setuppositionModal').modal('show');
+                   $('#departmentID').val(data.departmentID);
                    $('#posdescription').val(data.posdescription);  
                    $('.modal-title').text("Update Position");  
                    $('#positionID').val(positionID);  
@@ -155,7 +159,7 @@
                    $('#middlename').val(data.middlename); 
                    $('#lastname').val(data.lastname);
                    $('#gender').find(data.gender).text();
-                   /*$('#gender').val(data.gender); */
+                   $('#gender').val(data.gender); 
                    $('#housenumber').val(data.housenumber);
                    $('#streetname').val(data.streetname);
                    $('#barangay').val(data.barangay);
@@ -165,7 +169,7 @@
                    $('#civilstatus').val(data.civilstatus);
                    $('#citizenship').val(data.citizenship);
                    $('#hireddate').val(data.hireddate);
-                   $('#department').val(data.department);
+                   $('#description').val(data.departmentID);
                    $('#position').val(data.position);
                    $('#basicsalary').val(data.basicsalary);
                    $('#dailyrate').val(data.dailyrate);
@@ -175,7 +179,7 @@
                    $('#philhealthnumber').val(data.philhealthnumber);
                    $('#username').val(data.username);
                    $('#password').val(data.password);
-                   /*$("[value='2']").prop('checked', true);*/
+                   $("input[value='" + data.role_id + "']").prop('checked', true); 
                    $('#role_id').val(data.role_id);
                    $('#pagibignumber').val(data.pagibignumber); 
                    $('.modal-title').text("Update Employee");  

@@ -21,7 +21,7 @@ class Uploadpayslip_model extends CI_Model
         ');
 
            $department = $this->db->query('
-            SELECT * FROM department WHERE status = "Active" 
+            SELECT * FROM department WHERE departmentstatus = "Active" 
         ');
 
             $select = $fullname->result();

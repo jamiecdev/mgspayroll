@@ -53,7 +53,7 @@ class Department extends CI_Controller {
 	                $updated_data = array(   
 
 	                    'description' => $this->input->post('description'),
-	                    'status' => $this->input->post('status')
+	                    'departmentstatus' => $this->input->post('departmentstatus')
 	                );  
 	                $this->load->model('Department_model');  
 	                $this->Department_model->update($this->input->post("departmentID"), $updated_data); 
@@ -96,7 +96,7 @@ class Department extends CI_Controller {
 	           foreach($data as $r)  
 	           { 
 	                $output['description'] = $r->description;
-	                $output['status'] = $r->status;
+	                $output['departmentstatus'] = $r->departmentstatus;
 	           }  
 	           echo json_encode($output);  
 	      }  

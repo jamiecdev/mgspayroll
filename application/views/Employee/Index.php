@@ -109,7 +109,7 @@
                         </div>
                         <div class="col">
                           <label for="gender">Gender</label>
-                          <select class="form-control" name="gender" required>
+                          <select class="form-control" name="gender" id="gender" required>
                             <option>Male</option>
                             <option>Female</option>
                           </select>
@@ -150,7 +150,7 @@
                         </div>
                         <div class="col">
                           <label for="civilstatus">Civil Status</label>
-                          <select class="form-control" name="civilstatus">
+                          <select class="form-control" name="civilstatus" id="civilstatus">
                             <option>Single</option>
                             <option>Married</option>
                           </select>
@@ -169,7 +169,7 @@
                           <input id="hireddate" type="date" name="hireddate" class="form-control"  required>
                         </div>
                         <div class="col">
-                          <label for="gender">Department</label>
+                          <label for="description">Department</label>
                           <select class="form-control select2" id="description" name="departmentID" style="width: 100%;">
                             <?php
                             foreach($results['department'] as $department)
@@ -180,14 +180,14 @@
                           </select>
                         </div>
                         <div class="col">
-                          <label for="gender">Position</label>
+                          <label for="position">Position</label>
                           <select class="form-control select2" id="position" name="position" style="width: 100%;">
                             <option>No Selected</option>
                           </select>
                         </div>
                         <div class="col">
                           <label for="status">Status</label>
-                          <select class="form-control" name="status">
+                          <select class="form-control" name="status" id="status">
                             <option>Active</option>
                             <option>Terminated</option>
                             <option>End of Contract</option>
@@ -310,7 +310,7 @@
                         var html = '';
                         var i;
                         for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].positionID+'>'+data[i].posdescription+'</option>';
+                            html += '<option value='+data[i].posdescription+'>'+data[i].posdescription+'</option>';
                         }
                         $('#position').html(html);
  

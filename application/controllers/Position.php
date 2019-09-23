@@ -119,6 +119,7 @@ class Position extends CI_Controller {
 	           $data = $this->Position_model->fetch_single_position($_POST["positionID"]);  
 	           foreach($data as $r)  
 	           { 
+	           		$output['departmentID'] = $r->departmentID;
 	                $output['posdescription'] = $r->posdescription;
 	           }  
 	           echo json_encode($output);  

@@ -64,7 +64,7 @@
       <div class="modal-body">
             <div class="form-group">
             <label>Department</label>
-            <select class="form-control select2" name="departmentID" style="width: 100%;">
+            <select class="form-control select2" name="departmentID" id="departmentID" style="width: 100%;">
                             <?php
                             foreach($results['department'] as $department)
                             {
