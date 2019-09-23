@@ -95,7 +95,7 @@
 
                       <div class="form-group">
                         <div class="row">
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="firstname">First Name</label>
                           <input id="firstname" type="text" name="firstname" class="form-control input" autocomplete="off"  required>
                         </div>
@@ -103,7 +103,7 @@
                           <label for="middlename">Middle Name</label>
                           <input id="middlename" type="text" name="middlename" class="form-control input" autocomplete="off">
                         </div>
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="lastname">Last Name</label>
                           <input id="lastname" type="text" name="lastname" class="form-control input" autocomplete="off" required>
                         </div>
@@ -123,15 +123,15 @@
                           <label for="housenumber">Unit/House No.</label>
                           <input id="housenumber" type="text" name="housenumber" class="form-control input" autocomplete="off">
                         </div>
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="streetname">Building/Street Name</label>
                           <input id="streetname" type="text" name="streetname" class="form-control input" autocomplete="off" required>
                         </div>
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="barangay">Barangay</label>
                           <input id="barangay" type="text" name="barangay" class="form-control input" autocomplete="off" required>
                         </div>
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="city">City/Municipality</label>
                           <input id="city" type="text" name="city" class="form-control input" autocomplete="off" required>
                         </div>
@@ -140,11 +140,11 @@
 
                       <div class="form-group">
                         <div class="row">
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="birthdate">Birthdate</label>
                           <input id="birthdate" type="date" name="birthdate" class="form-control"  required>
                         </div>
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="contactinfo">Contact No.</label>
                           <input id="contactinfo" type="text" name="contactinfo" class="form-control" autocomplete="off" required>
                         </div>
@@ -155,7 +155,7 @@
                             <option>Married</option>
                           </select>
                         </div>
-                          <div class="col">
+                          <div class="col form-group">
                           <label for="citizenship">Citizenship</label>
                           <input id="citizenship" type="text" name="citizenship" class="form-control input" autocomplete="off" required>
                         </div>
@@ -164,7 +164,7 @@
 
                       <div class="form-group">
                         <div class="row">
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="hireddate">Hired Date</label>
                           <input id="hireddate" type="date" name="hireddate" class="form-control"  required>
                         </div>
@@ -203,11 +203,11 @@
                   <form class="forms-group">
                     <div class="form-group">
                       <label for="username">Username</label>
-                      <input type="text" class="form-control input" id="username" name="username" placeholder="Username" autocomplete="off">
+                      <input type="text" class="form-control input" id="username" name="username" placeholder="Username" autocomplete="off" required>
                     </div>
                     <div class="form-group">
                       <label for="password">Password</label>
-                      <input type="text" class="form-control input" id="password" name="password" placeholder="Password" autocomplete="off">
+                      <input type="text" class="form-control input" id="password" name="password" placeholder="Password" autocomplete="off" required>
                     </div>
                     <!-- <div class="form-group">
                       <label for="role">Role</label>
@@ -228,28 +228,28 @@
                     <div class="tab-pane fade" id="pills-detail" role="tabpanel" aria-labelledby="pills-detail-tab">
                       <div>
                         <div class="row">
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="basicsalary">Basic Salary</label>
                           <input id="basicsalary" type="number" name="basicsalary" class="form-control input" autocomplete="off"  required>
                         </div>
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="dailyrate">Daily Rate</label>
                           <input id="dailyrate" type="number" name="dailyrate" class="form-control input" autocomplete="off" required>
                         </div>
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="allowance">Allowance</label>
-                          <input id="allowance" type="number" name="allowance" class="form-control input" autocomplete="off" required>
+                          <input id="allowance" type="number" name="allowance" class="form-control input" autocomplete="off">
                         </div>
                         </div>
                       </div>
 
                       <div>
                         <div class="row">
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="tinnumber">Tin No.</label>
-                          <input id="tinnumber" type="text" name="tinnumber" class="form-control input" autocomplete="off"  required>
+                          <input id="tinnumber" type="text" name="tinnumber" class="form-control input" autocomplete="off">
                         </div>
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="sssnumber">SSS No.</label>
                           <input id="sssnumber" type="text" name="sssnumber" class="form-control input" autocomplete="off">
                         </div>
@@ -258,11 +258,11 @@
 
                       <div>
                         <div class="row">
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="philhealthnumber">Philhealth No.</label>
-                          <input id="philhealthnumber" type="text" name="philhealthnumber" class="form-control input" autocomplete="off"  required>
+                          <input id="philhealthnumber" type="text" name="philhealthnumber" class="form-control input" autocomplete="off">
                         </div>
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="pagibignumber">Pag-IBIG MID No.</label>
                           <input id="pagibignumber" type="text" name="pagibignumber" class="form-control input" autocomplete="off">
                         </div>

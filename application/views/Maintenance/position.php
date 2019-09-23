@@ -73,7 +73,7 @@
                             ?>  
                           </select>
             </div> 
-        <div>
+        <div class="form-group">
         <label for="posdescription">Position Name</label>
         <input type="text" class="form-control input" id="posdescription" name="posdescription" autocomplete="off" required>
         </div>

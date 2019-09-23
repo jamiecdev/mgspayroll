@@ -1,4 +1,4 @@
-<div class="main-panel">
+  <div class="main-panel">
   <div class="content-wrapper">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-custom bg-inverse-primary">
@@ -62,7 +62,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <div>
+        <div class="form-group">
         <label for="description">Department Name</label>
         <input type="text" class="form-control input" id="description" name="description" autocomplete="off" required>
         </div>

@@ -68,8 +68,7 @@
       $('#addModal').on("hidden.bs.modal", function() {
         $(this).find('form').trigger('reset');
         $('.modal-title').text("New Employee");
-        $("div.has-danger").hide();
-        $(".has-danger").removeClass("has-danger");
+        $('.form-group').removeClass('has-danger');
         $("label.error").hide();
         $(".error").removeClass("error");
         $('#employeeID').val("");  
@@ -79,6 +78,7 @@
       $('#setupdepartmentModal').on("hidden.bs.modal", function() {
         $(this).find('form').trigger('reset');
         $('.modal-title').text("New Department");
+        $('.form-group').removeClass('has-danger');
         $("label.error").hide();
         $(".error").removeClass("error"); 
         $('#departmentID').val("");  
@@ -88,6 +88,7 @@
       $('#setuppositionModal').on("hidden.bs.modal", function() {
         $(this).find('form').trigger('reset');
         $('.modal-title').text("New Position");
+        $('.form-group').removeClass('has-danger');
         $("label.error").hide();
         $(".error").removeClass("error");  
          $('#positionID').val("");  
