@@ -19,39 +19,33 @@
                         <div class="row">
                           <div class="col">
                           <label for="departmentID">Department</label>
-                         <select class="form-control select2" name="departmentID" id="department" required>
-                        <option value="">No Selected</option>
-                        <?php foreach($results['department'] as $row):?>
-                        <option value="<?php echo $row->departmentID;?>"><?php echo $row->description;?></option>
-                        <?php endforeach;?>
+                          <select class="form-control select2" id="description" name="departmentID" style="width: 100%;" required>
+                          <option>No Selected</option>
+                            <?php
+                            foreach($results['department'] as $department)
+                            {
+                            echo '<option value="'.$department->departmentID.'">'.$department->description.'</option>';
+                            }
+                            ?>  
                     </select>
+                         <!-- <select class="form-control select2" name="departmentID" id="description" required>
+                            <option value="">No Selected</option>
+                            <?php foreach($results['department'] as $row):?>
+                            <option value="<?php echo $row->departmentID;?>"><?php echo $row->description;?></option>
+                            <?php endforeach;?>
+                         </select> -->
                         </div>
+
                         <div class="col">
                           <label>Employee Name</label>
                             <select class="form-control select2" id="employee" name="employeeID" required>
-                        <option>No Selected</option>
- 
-                    </select>
-                          <!-- <label>Employee Name</label>
-                          <select class="form-control select2" name="employeeID" id="employeeID" style="width: 100%;">
-                          <?php
-                          foreach($results['fullname'] as $user)
-                          {
-                            echo '<option value="'.$user->employeeID.'">'.$user->firstname. ' '.$user->lastname.'</option>';
-                          }
-                          ?>
-                          </select> -->
+                              <option>No Selected</option>
+                            </select>
                         </div>
-                        
-                        <!-- <div class="col">
-                          <label for="payslip">Payslip</label>
-                          <input type="file" class="form-control" name="userImage" id="payslip" value="Choose File" />
-                        </div> -->
-
 
                         <div class="col form-group">
                           <label>Payslip</label>
-                          <input type="file" name="userImage" id="payslip" class="file-upload-default" required>
+                          <input type="file" name="userImage" id="payslip" class="file-upload-default" accept="application/pdf" required>
                           <div class="input-group col-xs-12">
                             <input type="text" class="form-control file-upload-info" disabled>
                             <span class="input-group-append">
@@ -64,7 +58,7 @@
                         </div>
                   </div>
                   <div class="modal-footer">
-        <input type="submit" name="action" id="action" class="btn btn-warning btn-rounded" value="Upload" /> 
+        <input type="submit" name="action" id="action" class="btn btnUpload btn-warning btn-rounded" value="Upload" /> 
         </div>
       </form>
                 </div>
@@ -84,7 +78,7 @@
             <div class="table-responsive">
               <table id="order-listing" class="table"><!-- 
                                          <button class="btn btn-outline-success" onclick="showSwal('warning-message-and-cancel')">Click here!</button> -->
-                <span><?php if($this->session->flashdata('employee')=="success") echo '<script type="text/javascript"> showSuccessToast() </script>';?></span>
+                <span><?php if($this->session->flashdata('employee')=="success") echo '<script type="text/javascript"> showSuccessToast(); </script>';?></span>
                 <thead>
                   <tr>
                       <th>Employee Name</th>
@@ -122,6 +116,28 @@
  <script>
   $(function () {
     $('.select2').select2();
+
+    $('#description').change(function(){ 
+                var id=$(this).val();
+                $.ajax({
+                    url : "<?php echo site_url('Uploadpayslip/get_employeename');?>",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                         
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].employeeID+'>'+data[i].firstname+'</option>';
+                        }
+                        $('#employee').html(html);
+ 
+                    }
+                });
+                return false;
+            }); 
   });
 </script>
 

@@ -15,7 +15,13 @@
 
 		public function canlogin()
 		{
-			if($this->session->userdata('userdata')) redirect(base_url());
+			if($this->session->userdata('userdata')){
+				if($this->session->userdata('userdata')['status']=="Active"){
+					echo "<script>alert('here');</script>";
+				}else{
+					echo "<script>alert('here1');</script>";
+				}
+			}
 			$data['title'] = 'Login';
 			$this->load->view("Login/Index", $data);	
 		}

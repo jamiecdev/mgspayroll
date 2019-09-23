@@ -1,5 +1,12 @@
 <?php 
-   class Employee extends CI_Controller {  
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+   class Employee extends CI_Controller {
+
+   function __construct(){
+        parent::__construct();
+        $this->load->model('Employee_model','employee_model');
+    }
      
 		public function index() 
 		{ 
@@ -8,11 +15,9 @@
 			);
 
 			$this->load->model('Employee_model');
-  			$results = $this->Employee_model->getallposition();
-  			$data=array('results'=>$results);
+	  		$results = $this->Employee_model->getallposition();
+	  		$data=array('results'=>$results);
 			$this->load->view('Template/Header');
-  			/*$query = $this->db->query('SELECT * FROM employee');
-         	$data['results'] = $query->result();*/
 			$this->load->view('Employee/Index', $data);
 			$this->load->view('Template/Footer');
 		} 
@@ -178,5 +183,12 @@
 			$this->load->view('Employee/Index',$data);
 			$this->load->view('Template/Footer');
 	      }
-	      }     
+
+	    public function get_position()
+	    {
+	        $departmentID = $this->input->post('id',TRUE);
+	        $data = $this->employee_model->get_position($departmentID)->result();
+	        echo json_encode($data);
+    	}
+}     
 ?>

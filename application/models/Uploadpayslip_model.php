@@ -3,10 +3,6 @@
 class Uploadpayslip_model extends CI_Model
 {
 
-  function __construct() 
-  { 
-     parent::__construct(); 
-  }
 
     public function getallposition()
         {
@@ -57,7 +53,7 @@ class Uploadpayslip_model extends CI_Model
         }
 
 
-    function get_employee($departmentID){
+    public function get_employeename($departmentID){
         $query = $this->db->get_where('employee', array('departmentID' => $departmentID));
         return $query;
     }

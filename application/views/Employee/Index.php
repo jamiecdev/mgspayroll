@@ -170,7 +170,7 @@
                         </div>
                         <div class="col">
                           <label for="gender">Department</label>
-                          <select class="form-control select2" name="departmentID" style="width: 100%;">
+                          <select class="form-control select2" id="description" name="departmentID" style="width: 100%;">
                             <?php
                             foreach($results['department'] as $department)
                             {
@@ -181,13 +181,8 @@
                         </div>
                         <div class="col">
                           <label for="gender">Position</label>
-                          <select class="form-control select2" name="position" style="width: 100%;">
-                            <?php
-                            foreach($results['position'] as $position)
-                            {
-                            echo '<option value="'.$position->posdescription.'">'.$position->posdescription.'</option>';
-                            }
-                            ?>
+                          <select class="form-control select2" id="position" name="position" style="width: 100%;">
+                            <option>No Selected</option>
                           </select>
                         </div>
                         <div class="col">
@@ -301,6 +296,28 @@
  <script>
   $(function () {
     $('.select2').select2();
+
+    $('#description').change(function(){ 
+                var id=$(this).val();
+                $.ajax({
+                    url : "<?php echo site_url('Employee/get_position');?>",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                         
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].positionID+'>'+data[i].posdescription+'</option>';
+                        }
+                        $('#position').html(html);
+ 
+                    }
+                });
+                return false;
+            });
   });
 </script>
               

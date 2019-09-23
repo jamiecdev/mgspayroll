@@ -1,5 +1,12 @@
 <?php 
-   class Uploadpayslip extends CI_Controller {  
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+   class Uploadpayslip extends CI_Controller { 
+
+   function __construct(){
+        parent::__construct();
+        $this->load->model('Uploadpayslip_model','uploadpayslip_model');
+    } 
      
 		public function index() 
 		{ 
@@ -61,11 +68,12 @@
 
 		  
 
-		public function get_employeename(){
-        $departmentID = $this->input->post('id',TRUE);
-        $data = $this->Uploadpayslip_model->get_employee($departmentID)->result();
-        echo json_encode($data);
-    }
+		public function get_employeename()
+		{
+	        $departmentID = $this->input->post('id',TRUE);
+	        $data = $this->uploadpayslip_model->get_employeename($departmentID)->result();
+	        echo json_encode($data);
+    	}
 }     
 ?>
 

@@ -55,7 +55,12 @@ class Employee_model extends CI_Model
         {  
            $this->db->where("employeeID", $employeeID);  
            $this->db->update("employee", $data);  
-      	}    
+      	}
+        
+    public function get_position($departmentID){
+        $query = $this->db->get_where('position', array('departmentID' => $departmentID));
+        return $query;
+    }
 }
 ?>
 

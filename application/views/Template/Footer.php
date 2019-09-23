@@ -6,7 +6,6 @@
   <script src="<?php echo base_url(); ?>assets/js/template.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/settings.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/todolist.js"></script>
-
   <script src="<?php echo base_url(); ?>assets/js/data-table.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/modal-demo.js"></script>
   <script src="<?php echo base_url(); ?>assets/vendors/jquery-validation/jquery.validate.min.js"></script>
@@ -50,6 +49,18 @@
           
       });
 
+      $('.btnUpload').unbind('click').bind('click', function(event){
+       
+        fileName = $('input[type=file]').val();
+        dots = fileName.split(".");
+
+        //get the part AFTER the LAST period.
+        fileType = "." + dots[dots.length-1];
+        if(fileType!=".pdf"){
+          showUploadError();
+          event.preventDefault();
+        }
+      });
 
       $('#contactinfo').mask('0000-000-0000');
       
@@ -79,29 +90,7 @@
         $(".error").removeClass("error");  
          $('#positionID').val("");  
          $('#action').val("Add");  
-      });
-
-      $('#department').change(function(){ 
-                var id=$(this).val();
-                $.ajax({
-                    url : "<?php echo site_url('Product/get_employeename');?>",
-                    method : "POST",
-                    data : {id: id},
-                    async : true,
-                    dataType : 'json',
-                    success: function(data){
-                         
-                        var html = '';
-                        var i;
-                        for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].employeeID+'>'+data[i].firstname+' '+data[i].lastname+'</option>';
-                        }
-                        $('#employee').html(html);
- 
-                    }
-                });
-                return false;
-            }); 
+      }); 
 
       $(".reveal").on('click',function() {
           var $pwd = $(".pwd");

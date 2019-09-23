@@ -138,4 +138,19 @@
       "right": ""
     }); //to remove previous position style
   }
+
+  showUploadError = function() {
+    'use strict';
+
+    resetToastPosition();
+    $.toast({
+      heading: 'Danger',
+      text: 'File not supported! Please select a PDF File and try again.',
+      showHideTransition: 'slide',
+      icon: 'error',
+      loaderBg: '#ffffff',
+      position: 'top-right',
+      hideAfter: 7000 
+    });
+  }
 })(jQuery);
