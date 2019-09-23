@@ -27,10 +27,27 @@ class Position_model extends CI_Model
             );
     }
 
-  	public function addposition($data)  
-	    {  
-	       $this->db->insert('position', $data);  
-	    }
+    public function addposition($data,$posdescription)  
+      {  
+          $query = $this->db->query("SELECT departmentID, posdescription FROM position
+                               WHERE posdescription = '".$posdescription."'");
+         if($query->num_rows() == 0){
+        $data = array(
+            'departmentID' => $this->input->post('departmentID'),
+            'posdescription' => $this->input->post('posdescription')
+             );
+            $this->db->insert('position', $data);
+        }
+        else {
+            return false;
+        }
+             //$this->db->insert('department', $data);  
+          }
+
+
+
+         //$this->db->insert('position', $data);  
+      //}
 
     public function fetch_single_position($positionID)  
         {  
@@ -42,6 +59,6 @@ class Position_model extends CI_Model
         {  
            $this->db->where("positionID", $positionID);  
            $this->db->update("position", $data);  
-      	}    
+        }    
 }
 ?>

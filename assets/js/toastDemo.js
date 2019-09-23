@@ -65,12 +65,38 @@
       hideAfter: 7000, 
     })
   };
+  showDeptWarningToast = function() {
+    'use strict';
+    resetToastPosition();
+    $.toast({
+      heading: 'Warning',
+      text: 'Department already exist.',
+      showHideTransition: 'slide',
+      icon: 'warning',
+      loaderBg: '#ffffff',
+      position: 'top-right',
+      hideAfter: 7000, 
+    })
+  };
+  showPosWarningToast = function() {
+    'use strict';
+    resetToastPosition();
+    $.toast({
+      heading: 'Warning',
+      text: 'Position already exist.',
+      showHideTransition: 'slide',
+      icon: 'warning',
+      loaderBg: '#ffffff',
+      position: 'top-right',
+      hideAfter: 7000, 
+    })
+  };
   showInfoToast = function() {
     'use strict';
     resetToastPosition();
     $.toast({
       heading: 'Info',
-      text: 'And these were just the basic demos! Scroll down to check further details on how to customize the output.',
+      text: 'And these were just the basic demos! Scroll down to check further details on how to customize the outfdgdfgdfgdfput.',
       showHideTransition: 'slide',
       icon: 'info',
       loaderBg: '#46c35f',

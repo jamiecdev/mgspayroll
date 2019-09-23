@@ -22,6 +22,7 @@
           <div class="col-12">
             <div class="table-responsive">
               <table id="order-listing" class="table">
+                 <span><?php if($this->session->flashdata('error')=="Info") echo '<script type="text/javascript"> showPosWarningToast() </script>';?></span>
                 <span><?php if($this->session->flashdata('position')=="pos") echo '<script type="text/javascript"> showPositionToast() </script>';?></span>
                 <thead>
                   <tr>

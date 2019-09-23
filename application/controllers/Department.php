@@ -18,19 +18,38 @@ class Department extends CI_Controller {
 	public function department_action(){  
 	           if($_POST["action"] == "Add")  
 	           {  
-	                $data = array(
- 
-	                    'description' => $this->input->post('description'),
-	                    'status' => $this->input->post('status')
-	                );  
+	           	$this->load->library('form_validation');
+			    // field name, error message, validation rules
+			    $this->form_validation->set_rules('description', 'Description', 'trim|callback_exists_in_database');
+
+			    if($this->form_validation->run() == FALSE)
+	               {
+				    $data = $this->input->post("description");
 	                $this->load->model('Department_model');  
 	                $this->Department_model->adddepartment($data); 
-	                $this->session->set_flashdata('department', 'dept');  
+	                $this->session->set_flashdata('department', 'success');  
 	                redirect("Department");
+        			$this->reservate();
+				       
+				    }
+				    else
+				    {
+				    $data = $this->input->post("description");
+        			  $this->load->model('Department_model');  
+	                $this->session->set_flashdata('error', 'Info');
+				    redirect("Department",'refresh');
+				    $this->reservate();
 
-	           }  
+	           }
+
+	           } 
 	           if($_POST["action"] == "Update")  
 	           {   
+	           	 $this->load->library('form_validation');
+			    // field name, error message, validation rules
+			    $this->form_validation->set_rules('description', 'Description');
+			      if($this->form_validation->run() == FALSE)
+	               {
 	                $updated_data = array(   
 
 	                    'description' => $this->input->post('description'),
@@ -40,8 +59,34 @@ class Department extends CI_Controller {
 	                $this->Department_model->update($this->input->post("departmentID"), $updated_data); 
 	                $this->session->set_flashdata('department', 'dept'); 
 	                redirect("Department"); 
-	           }  
+	           }
+	            else
+				    {
+				    	$data = $this->input->post("description");
+				    	 $this->load->model('Department_model');
+				    	  $this->session->set_flashdata('error', 'Info');
+				    	redirect("Department",'refresh');
+				   		 $this->reservate();
+
 	      }
+
+	  }
+	}
+	           public function exists_in_database($description)
+        {
+
+                $query = $this->db->get_where('department', array('description' => $description)); 
+
+                if ($query->num_rows() == 0 )
+                {
+                        $this->form_validation->set_message('exists_in_database', 'Please enter an existing department');
+                        return FALSE;
+                }
+                else
+                {
+                        return TRUE;
+                }
+        }
 
     public function fetch_single_dept()  
 	      {  

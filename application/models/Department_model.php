@@ -8,10 +8,24 @@ class Department_model extends CI_Model
      parent::__construct(); 
   }
 
-  	public function adddepartment($data)  
-	    {  
-	       $this->db->insert('department', $data);  
-	    }
+    public function adddepartment($data)  
+    {  
+       
+          $query = $this->db->query("SELECT description FROM Department
+                               WHERE description = '".$data."'");
+         if($query->num_rows() == 0){
+        $data = array(
+            'description' => $this->input->post('description'),
+            'status' => $this->input->post('status')
+             );
+            $this->db->insert('department', $data);
+        }
+        else {
+            return false;
+        }
+             //$this->db->insert('department', $data);  
+          }
+    
 
     public function fetch_single_dept($departmentID)  
         {  
@@ -21,8 +35,31 @@ class Department_model extends CI_Model
         }  
     public function update($departmentID, $data)  
         {  
+
+
+          $query = $this->db->query("select departmentid,employeeID,fullname,description,status from 
+              (
+              select emp.departmentid,emp.employeeID,concat(emp.firstname,' ',emp.middlename,' ',emp.lastname) as fullname,d.description,emp.status from employee as emp
+              left  join  department as  d on emp.departmentid = d.departmentid
+              where emp.status like 'Active' and emp.departmentid = '".$departmentID."'
+              )a");
+            if($query->num_rows() == 0){
+                $data1 = array(
+                'description' => $this->input->post('description'),
+                'status' => $this->input->post('status')
+             );
+               if($data1 == 0) {
+              $cond = "5";
+              }else{
+             $cond = "" .$data;
+          } 
+
            $this->db->where("departmentID", $departmentID);  
            $this->db->update("department", $data);  
-        }   
+        } 
+         else {
+            return false;
+        } 
+      } 
 }
 ?>
