@@ -37,7 +37,8 @@
                   <span class="text-danger"></span>
               <form method="post" action="<?php echo base_url(); ?>Login/login_validation">
                 <span class="text-danger"><?php echo $this->session->flashdata("error"); ?> </span> 
-                <span><?php if($this->session->flashdata('login')=="sucess") echo '<script type="text/javascript"> showSuccessToast() </script>';?></span>
+                <!-- <span class="text-danger"><?php echo $this->session->flashdata("inact"); ?> </span>
+ -->                <span><?php if($this->session->flashdata('login')=="sucess") echo '<script type="text/javascript"> showSuccessToast() </script>';?></span>
                 <div class="form-group">
                   <label for="exampleInputEmail">Username</label>
                   <div class="input-group">

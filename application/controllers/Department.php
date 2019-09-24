@@ -35,7 +35,7 @@ class Department extends CI_Controller {
 				    else
 				    {
 				    $data = $this->input->post("description");
-        			  $this->load->model('Department_model');  
+        			$this->load->model('Department_model');  
 	                $this->session->set_flashdata('error', 'Info');
 				    redirect("Department",'refresh');
 				    $this->reservate();

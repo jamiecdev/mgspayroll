@@ -171,7 +171,8 @@
                    $('#citizenship').val(data.citizenship);
                    $('#hireddate').val(data.hireddate);
                    $('#description').val(data.departmentID);
-                   $('#position').val(data.position);
+                   $('#description').change();
+                   $('#hiddenPosition').val(data.positionID);
                    $('#basicsalary').val(data.basicsalary);
                    $('#dailyrate').val(data.dailyrate);
                    $('#allowance').val(data.allowance);

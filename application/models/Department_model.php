@@ -11,7 +11,7 @@ class Department_model extends CI_Model
     public function adddepartment($data)  
     {  
        
-          $query = $this->db->query("SELECT description FROM Department
+          $query = $this->db->query("SELECT description FROM department
                                WHERE description = '".$data."'");
          if($query->num_rows() == 0){
         $data = array(

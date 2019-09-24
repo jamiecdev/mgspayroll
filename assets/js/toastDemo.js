@@ -179,4 +179,19 @@
       hideAfter: 7000 
     });
   }
+
+  showUploadReq = function() {
+    'use strict';
+
+    resetToastPosition();
+    $.toast({
+      heading: 'Danger',
+      text: 'Input a file.',
+      showHideTransition: 'slide',
+      icon: 'error',
+      loaderBg: '#ffffff',
+      position: 'top-right',
+      hideAfter: 7000 
+    });
+  }
 })(jQuery);

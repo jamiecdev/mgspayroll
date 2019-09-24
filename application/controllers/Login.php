@@ -43,8 +43,10 @@
 					$lastname            = $data['lastname'];
 					$status              = $data['status'];
 					$gender              = $data['gender'];
-					$department          = $data['department'];
+					$departmentID		 = $data['departmentID'];
+					$departmentDesc      = $data['description'];
 					$positionID          = $data['positionID'];
+					$positionDesc        = $data['positiondescription'];
 					$housenumber         = $data['housenumber'];
 					$streetname          = $data['streetname'];
 					$barangay            = $data['barangay'];
@@ -61,6 +63,10 @@
 					$sssnumber           = $data['sssnumber'];
 					$philhealthnumber    = $data['philhealthnumber'];
 					$pagibignumber       = $data['pagibignumber'];
+					if($status!="Active"){
+						$this->session->set_flashdata('error', 'Account is no longer active.');
+						redirect(base_url());
+					}
 					$session_data        = array(
 					'employeeID'         => $employeeID, 
 					'username'           => $username,
@@ -71,8 +77,10 @@
 					'gender'             => $gender,
 					'fullname'           => $firstname.' '.$lastname,
 					'status'             => $status,
-					'department'         => $department,
+					'departmentID'		 => $departmentID,
+					'departmentDesc'     => $departmentDesc,
 					'positionID'         => $positionID,
+					'positionDesc'       => $positionDesc,
 					'address'            => $housenumber.' '.$streetname.' '.$barangay.' '.$city,
 					'contactinfo'        => $contactinfo,
 					'birthdate'		     => $birthdate,
@@ -95,7 +103,7 @@
 				else
 				{
 
-					$this->session->set_flashdata('error', 'Invalid Username or password');
+					$this->session->set_flashdata('error', 'Invalid Username or Password');
 					redirect(base_url());
 				}
 			}

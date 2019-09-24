@@ -107,7 +107,7 @@
                           <label for="lastname">Last Name</label>
                           <input id="lastname" type="text" name="lastname" class="form-control input" autocomplete="off" required>
                         </div>
-                        <div class="col">
+                        <div class="col form-group">
                           <label for="gender">Gender</label>
                           <select class="form-control" name="gender" id="gender" required>
                             <option>Male</option>
@@ -170,7 +170,7 @@
                         </div>
                         <div class="col">
                           <label for="description">Department</label>
-                          <select class="form-control" id="description" name="departmentID" style="width: 100%;">
+                          <select class="form-control select2" id="description" name="departmentID" style="width: 100%;">
                             <?php
                             foreach($results['department'] as $department)
                             {
@@ -181,8 +181,9 @@
                         </div>
                         <div class="col">
                           <label for="positionID">Position</label>
-                          <select class="form-control select2" id="positionID" name="positionID" style="width: 100%;">
-                            <option>No Selected</option>
+                          <input type="hidden" id="hiddenPosition" name="hiddenPosition">
+                          <select class="form-control select2" id="position" name="positionID" style="width: 100%;">
+                            <option></option>
                           </select>
                         </div>
                         <div class="col">
@@ -310,10 +311,13 @@
                         var html = '';
                         var i;
                         for(i=0; i<data.length; i++){
+						  if($("#hiddenPosition").val()==data[i].positionID){
+                            html += '<option value='+data[i].positionID+' selected>'+data[i].positiondescription+'</option>';
+                          }else{
                             html += '<option value='+data[i].positionID+'>'+data[i].positiondescription+'</option>';
+						  }
                         }
-                        $('#positionID').html(html);
- 
+                        $('#position').html(html);
                     }
                 });
                 return false;

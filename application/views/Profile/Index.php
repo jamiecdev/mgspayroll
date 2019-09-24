@@ -17,8 +17,8 @@
                         <div class="mb-3">
                           <h3><?php echo $this->session->userdata('userdata')['fullname'] ?></h3>
                         </div>
-                        <p class="w-75 mx-auto mb-1"><?php echo $this->session->userdata('userdata')['position'] ?></p>
-                        <p class="w-75 mx-auto mb-3"><?php echo $this->session->userdata('userdata')['department'] ?></p>                       
+                        <p class="w-75 mx-auto mb-1"><?php echo $this->session->userdata('userdata')['positionDesc']; ?></p>
+                        <p class="w-75 mx-auto mb-3"><?php echo $this->session->userdata('userdata')['departmentDesc']; ?></p>                       
                       </div>
                       <div class="py-4 mr-2">
                         <p class="clearfix">

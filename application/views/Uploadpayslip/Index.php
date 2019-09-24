@@ -17,10 +17,10 @@
                   <form id="commentForm" method="post" enctype="multipart/form-data" action="<?php echo site_url('Uploadpayslip/addpayslip'); ?>">
                   <div class="form-group">
                         <div class="row">
-                          <div class="col">
+                          <div class="col form-group">
                           <label for="departmentID">Department</label>
                           <select class="form-control select2" id="description" name="departmentID" style="width: 100%;" required>
-                          <option>No Selected</option>
+                          <option value=""></option>
                             <?php
                             foreach($results['department'] as $department)
                             {
@@ -36,10 +36,10 @@
                          </select> -->
                         </div>
 
-                        <div class="col">
+                        <div class="col form-group">
                           <label>Employee Name</label>
                             <select class="form-control select2" id="employee" name="employeeID" required>
-                              <option>No Selected</option>
+                              <option value=""></option>
                             </select>
                         </div>
 
@@ -95,7 +95,7 @@
 
                           echo '<tr>';
                           echo '<td>'.$frow->firstname.' '.$frow->lastname.'</td>';
-                          echo '<td>'.$frow->position.'</td>';
+                          echo '<td>'.$frow->positiondescription.'</td>';
                           echo '<td>'.$frow->description.'</td>';
                           echo '<td>'.$frow->payslipuploaded.'</td>';
                           echo '<td><a class="btn btn-outline-warning btn-fw" style="margin-right: 10px;" href="Viewpayslip/preview?id='.$frow->payslipID.'" >View</a>
