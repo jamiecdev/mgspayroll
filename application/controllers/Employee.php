@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				        'citizenship' => $this->input->post('citizenship'),
 				        'hireddate' => $this->input->post('hireddate'),
 				        'departmentID' => $this->input->post('departmentID'),
-				        'position' => $this->input->post('position'),
+				        'positionID' => $this->input->post('positionID'),
 				        'status' => $this->input->post('status'), 
 				        'basicsalary' => $this->input->post('basicsalary'),
 				        'dailyrate' => $this->input->post('dailyrate'),
@@ -81,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				        'citizenship' => $this->input->post('citizenship'),
 				        'hireddate' => $this->input->post('hireddate'),
 				        'departmentID' => $this->input->post('departmentID'),
-				        'position' => $this->input->post('position'),
+				        'positionID' => $this->input->post('positionID'),
 				        'status' => $this->input->post('status'), 
 				        'basicsalary' => $this->input->post('basicsalary'),
 				        'dailyrate' => $this->input->post('dailyrate'),
@@ -123,7 +123,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                $output['citizenship'] = $r->citizenship;
 	                $output['hireddate'] = $r->hireddate;
 	                $output['departmentID'] = $r->departmentID;
-	                $output['position'] = $r->position;
+	                $output['positionID'] = $r->positionID;
 	                $output['status'] = $r->status; 
 	                $output['basicsalary'] = $r->basicsalary;
 	                $output['dailyrate'] = $r->dailyrate;

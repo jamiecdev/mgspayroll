@@ -135,7 +135,7 @@
               {  
                    $('#setuppositionModal').modal('show');
                    $('#departmentID').val(data.departmentID);
-                   $('#posdescription').val(data.posdescription);  
+                   $('#positiondescription').val(data.positiondescription);  
                    $('.modal-title').text("Update Position");  
                    $('#positionID').val(positionID);  
                    $('#action').val("Update");  

@@ -8,10 +8,11 @@ class Login_model extends CI_Model
      parent::__construct(); 
   }
   
-	function can_login($username, $password)
+	function can_login($username, $password, $status)
 	{
 		$this->db->where('username', $username);
 		$this->db->where('password', $password);
+		$this->db->where('status', $status);
 		$query = $this->db->get('employee');
 
 		if($query->num_rows() > 0)
@@ -27,6 +28,7 @@ class Login_model extends CI_Model
 	function validate($username,$password){
     $this->db->where('username',$username);
     $this->db->where('password',$password);
+    $this->db->where('status = "Active"',$status);
     $result = $this->db->get('employee',1);
     return $result;
   }

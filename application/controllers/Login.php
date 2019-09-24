@@ -44,7 +44,7 @@
 					$status              = $data['status'];
 					$gender              = $data['gender'];
 					$department          = $data['department'];
-					$position            = $data['position'];
+					$positionID          = $data['positionID'];
 					$housenumber         = $data['housenumber'];
 					$streetname          = $data['streetname'];
 					$barangay            = $data['barangay'];
@@ -72,7 +72,7 @@
 					'fullname'           => $firstname.' '.$lastname,
 					'status'             => $status,
 					'department'         => $department,
-					'position'           => $position,
+					'positionID'         => $positionID,
 					'address'            => $housenumber.' '.$streetname.' '.$barangay.' '.$city,
 					'contactinfo'        => $contactinfo,
 					'birthdate'		     => $birthdate,

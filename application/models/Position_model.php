@@ -1,3 +1,4 @@
+
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Position_model extends CI_Model
@@ -27,14 +28,14 @@ class Position_model extends CI_Model
             );
     }
 
-    public function addposition($data,$posdescription)  
+    public function addposition($data,$positiondescription)  
       {  
-          $query = $this->db->query("SELECT departmentID, posdescription FROM position
-                               WHERE posdescription = '".$posdescription."'");
+          $query = $this->db->query("SELECT departmentID, positiondescription FROM position
+                               WHERE positiondescription = '".$positiondescription."'");
          if($query->num_rows() == 0){
         $data = array(
             'departmentID' => $this->input->post('departmentID'),
-            'posdescription' => $this->input->post('posdescription')
+            'positiondescription' => $this->input->post('positiondescription')
              );
             $this->db->insert('position', $data);
         }

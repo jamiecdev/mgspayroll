@@ -170,7 +170,7 @@
                         </div>
                         <div class="col">
                           <label for="description">Department</label>
-                          <select class="form-control select2" id="description" name="departmentID" style="width: 100%;">
+                          <select class="form-control" id="description" name="departmentID" style="width: 100%;">
                             <?php
                             foreach($results['department'] as $department)
                             {
@@ -180,8 +180,8 @@
                           </select>
                         </div>
                         <div class="col">
-                          <label for="position">Position</label>
-                          <select class="form-control select2" id="position" name="position" style="width: 100%;">
+                          <label for="positionID">Position</label>
+                          <select class="form-control select2" id="positionID" name="positionID" style="width: 100%;">
                             <option>No Selected</option>
                           </select>
                         </div>
@@ -310,9 +310,9 @@
                         var html = '';
                         var i;
                         for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].posdescription+'>'+data[i].posdescription+'</option>';
+                            html += '<option value='+data[i].positionID+'>'+data[i].positiondescription+'</option>';
                         }
-                        $('#position').html(html);
+                        $('#positionID').html(html);
  
                     }
                 });

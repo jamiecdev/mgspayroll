@@ -37,7 +37,7 @@
 
                           echo '<tr>';
                           echo '<td>'.$r->description.'</td>'; 
-                          echo '<td>'.$r->posdescription.'</td>';
+                          echo '<td>'.$r->positiondescription.'</td>';
                           echo '<td><button type="button" name="Update" id="'.$r->positionID.'" class="btn btn-outline-warning position-edit" data-target="#setuppositionModal">View</button></td>' ;
                         }
                       ?>
@@ -74,8 +74,8 @@
                           </select>
             </div> 
         <div class="form-group">
-        <label for="posdescription">Position Name</label>
-        <input type="text" class="form-control input" id="posdescription" name="posdescription" autocomplete="off" required>
+        <label for="positiondescription">Position Name</label>
+        <input type="text" class="form-control input" id="positiondescription" name="positiondescription" autocomplete="off" required>
         </div>
       </div>
        <div class="modal-footer">
