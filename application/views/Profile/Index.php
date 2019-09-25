@@ -13,7 +13,12 @@
                   <div class="row">
                     <div class="col-lg-4">
                       <div class="border-bottom text-center pb-4">
-                        <img src="assets/images/faces/profileimg.png" alt="profile" class="img-lg rounded-circle mb-3"/>
+                        <?php if($this->session->userdata('userdata')['photo']==""){
+                          echo '<img src="uploads/profileimg.png" alt="profile" class="img-lg rounded-circle mb-3"/>';
+                        }else{
+                          echo '<img src="uploads/'.$this->session->userdata('userdata')['photo'].'" alt="profile" class="img-lg rounded-circle mb-3"/>';
+                        }
+                         ?>
                         <div class="mb-3">
                           <h3><?php echo $this->session->userdata('userdata')['fullname'] ?></h3>
                         </div>

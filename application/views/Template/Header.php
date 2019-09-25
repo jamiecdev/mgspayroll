@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="<?=base_url(); ?>assets/css/select2/select2.min.css">
   <link rel="stylesheet" href="<?=base_url(); ?>assets/css/jquery-toast-plugin/jquery.toast.min.css">
   <link rel="shortcut icon" href="<?=base_url(); ?>assets/images/favicon.png" />
+  <link rel="stylesheet" href="<?=base_url(); ?>assets/vendors/owl-carousel-2/owl.carousel.min.css">
+  <link rel="stylesheet" href="<?=base_url(); ?>assets/vendors/owl-carousel-2/owl.theme.default.min.css">
     <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/jquery-toast-plugin/jquery.toast.min.js"></script>
@@ -140,7 +142,12 @@
           </li> -->
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="assets/images/faces/profileimg.png" alt="profile" class="img-lg rounded-circle mb-3"/>
+              <?php if($this->session->userdata('userdata')['photo']==""){
+                  echo '<img src="uploads/profileimg.png" alt="profile" class="img-lg rounded-circle mb-3"/>';
+                }else{
+                  echo '<img src="uploads/'.$this->session->userdata('userdata')['photo'].'" alt="profile" class="img-lg rounded-circle mb-3"/>';
+                }
+               ?>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                <?php echo anchor('Profile', '<i class="mdi mdi-face ml-4"></i>

@@ -23,7 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		} 
 
 
-	    public function employee_action(){  
+	    public function employee_action(){
+
 	           if($_POST["action"] == "Add")  
 	           {  
 	                $data = array( 
@@ -65,6 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	           }  
 	           if($_POST["action"] == "Update")
 	           {   
+
 	                $updated_data = array(
 
 	                	'firstname' => $this->input->post('firstname'),
@@ -92,13 +94,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				        'pagibignumber' => $this->input->post('pagibignumber'),
 				        'username' => $this->input->post('username'),
 				        'password' => $this->input->post('password'),
-				        'role_id' => $this->input->post('role_id'),
+				        'role_id' => $this->input->post('role_id')
 
-	                );  
+	                ); 
+
+
+
 	                $this->load->model('Employee_model');  
 	                $this->Employee_model->update($this->input->post("employeeID"), $updated_data); 
 	                $this->session->set_flashdata('employee', 'success'); 
-	                redirect("Employee"); 
+	                redirect("Employee");
+
+
+
+
 	           }  
 	      }
 
@@ -135,6 +144,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                $output['username'] = $r->username;
 	                $output['password'] = $r->password;
 	                $output['role_id'] = $r->role_id;
+	                $output['photo'] = $r->photo;
 
 	           }  
 	           echo json_encode($output);  

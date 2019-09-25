@@ -17,8 +17,7 @@
 		{
 			if($this->session->userdata('userdata')){
 				if($this->session->userdata('userdata')['status']=="Active"){
-					echo "<script>alert('here');</script>";
-				}else{
+									}else{
 					echo "<script>alert('here1');</script>";
 				}
 			}
@@ -43,7 +42,7 @@
 					$lastname            = $data['lastname'];
 					$status              = $data['status'];
 					$gender              = $data['gender'];
-					$departmentID		 = $data['departmentID'];
+					$departmentID        = $data['departmentID'];
 					$departmentDesc      = $data['description'];
 					$positionID          = $data['positionID'];
 					$positionDesc        = $data['positiondescription'];
@@ -63,10 +62,13 @@
 					$sssnumber           = $data['sssnumber'];
 					$philhealthnumber    = $data['philhealthnumber'];
 					$pagibignumber       = $data['pagibignumber'];
+					$photo      	     = $data['photo'];
+
 					if($status!="Active"){
 						$this->session->set_flashdata('error', 'Account is no longer active.');
 						redirect(base_url());
 					}
+
 					$session_data        = array(
 					'employeeID'         => $employeeID, 
 					'username'           => $username,
@@ -77,7 +79,7 @@
 					'gender'             => $gender,
 					'fullname'           => $firstname.' '.$lastname,
 					'status'             => $status,
-					'departmentID'		 => $departmentID,
+					'departmentID'       => $departmentID,
 					'departmentDesc'     => $departmentDesc,
 					'positionID'         => $positionID,
 					'positionDesc'       => $positionDesc,
@@ -94,6 +96,7 @@
 					'sssnumber'		     => $sssnumber,
 					'philhealthnumber'	 => $philhealthnumber,
 					'pagibignumber'		 => $pagibignumber,
+					'photo'		 		 => $photo,
 					'logged_in'          => TRUE
 					);
 					$this->session->set_userdata('userdata',$session_data);
@@ -102,8 +105,7 @@
 				}
 				else
 				{
-
-					$this->session->set_flashdata('error', 'Invalid Username or Password');
+					$this->session->set_flashdata('error', 'Invalid Username or password');
 					redirect(base_url());
 				}
 			}

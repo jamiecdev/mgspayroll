@@ -22,8 +22,14 @@
           <div class="col-12">
             <div class="table-responsive">
               <table id="order-listing" class="table">
-                <span><?php if($this->session->flashdata('error')=="Info") echo '<script type="text/javascript"> showDeptWarningToast() </script>';?></span>
-                <span><?php if($this->session->flashdata('department')=="dept") echo '<script type="text/javascript"> showDepartmentToast() </script>';?></span>
+                <span><?php if($this->session->flashdata('error')=="used"){
+                   echo '<script type="text/javascript"> showDeptWarningToast(); </script>';
+                }else if($this->session->flashdata('error')=="exists"){
+                  echo '<script type="text/javascript"> showDeptExistToast(); </script>';
+                }
+                ?>
+                </span>
+                <span><?php if($this->session->flashdata('department')=="dept") echo '<script type="text/javascript"> showDepartmentToast(); </script>';?></span>
                 <thead>
                   <tr>
                       <th>Department</th>

@@ -33,7 +33,7 @@
                         foreach ($files as $frow) {
 
                           echo '<tr>';
-                          echo '<td>'.$frow->payslipdate.'</td>';
+                          echo '<td>'.$frow->payslipuploaded.'</td>';
                           /* echo '<td><a href="Viewpayslip/preview" id="'.$frow->payslipID.'" >View</a></td>' ;*/
                           echo '<td><a class="btn btn-outline-warning btn-fw" href="Viewpayslip/preview?id='.$frow->payslipID.'" >View</a></td>' ;
                          /* echo '<td><object data="data:application/pdf;base64,'.base64_encode($frow['payslip'] ).'" type="application/pdf" style="height:200px;width:60%"></object></td>';*/

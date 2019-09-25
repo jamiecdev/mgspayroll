@@ -21,14 +21,14 @@
   <script src="<?php echo base_url(); ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/jquery.mask.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/owl-carousel.js"></script>
 </body>
   <script  type="text/javascript">  
     $(document).ready(function(){
       var ctr=0;
     
       $('.input').keydown(function(e){
-        
-    
           if(e.target.selectionStart === 0){
             if(e.which == 32){
               return false;
@@ -45,12 +45,9 @@
           if(ctr>1){
             e.preventDefault();
           }
-
-          
       });
 
       $('.btnUpload').unbind('click').bind('click', function(event){
-       
         fileName = $('input[type=file]').val();
         dots = fileName.split(".");
 
@@ -63,7 +60,6 @@
       });
 
       $('#contactinfo').mask('0000-000-0000');
-      
 
       $('#addModal').on("hidden.bs.modal", function() {
         $(this).find('form').trigger('reset');
@@ -91,9 +87,14 @@
         $('.form-group').removeClass('has-danger');
         $("label.error").hide();
         $(".error").removeClass("error");  
-         $('#positionID').val("");  
-         $('#action').val("Add");  
+        $('#positionID').val("");  
+        $('#action').val("Add");  
       }); 
+
+      $(".profilepic").on('click',function() {
+        $('#empID').val($(this).attr("id"));
+        $('#uploadpicture').modal('show');
+      });
 
       $(".reveal").on('click',function() {
           var $pwd = $(".pwd");
@@ -183,6 +184,7 @@
                    $('#password').val(data.password);
                    $("input[value='" + data.role_id + "']").prop('checked', true); 
                    $('#role_id').val(data.role_id);
+                   $('#photo').val(data.photo);
                    $('#pagibignumber').val(data.pagibignumber); 
                    $('.modal-title').text("Update Employee");  
                    $('#employeeID').val(employeeID);  

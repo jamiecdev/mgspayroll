@@ -47,7 +47,14 @@
 
                           echo '<tr>';
                           echo '<td class="py-1 user-circle">
-                            <img src="assets/images/faces/profileimg.png" alt="image"/>'.' '.$r->firstname.' '.$r->lastname.'</td>';
+                            <a id="'.$r->employeeID.'" class="profilepic">';
+                            if($r->photo==""){
+                              echo '<img src="uploads/profileimg.png" alt="image"></a>'.' '.$r->firstname.' '.$r->lastname.'</td>';
+                            }else{
+                              echo '<img src="uploads/'.$r->photo.'" alt="image"></a>'.' '.$r->firstname.' '.$r->lastname.'</td>';
+                            }
+
+                            
                           echo '<td>'.$r->contactinfo.'</td>'; 
                           echo '<td>'.$r->hireddate.'</td>';  
                           echo '<td><label class="badge badge-success">'.$r->status.'</label></td>'; 
@@ -107,7 +114,7 @@
                           <label for="lastname">Last Name</label>
                           <input id="lastname" type="text" name="lastname" class="form-control input" autocomplete="off" required>
                         </div>
-                        <div class="col form-group">
+                        <div class="col">
                           <label for="gender">Gender</label>
                           <select class="form-control" name="gender" id="gender" required>
                             <option>Male</option>
@@ -183,7 +190,7 @@
                           <label for="positionID">Position</label>
                           <input type="hidden" id="hiddenPosition" name="hiddenPosition">
                           <select class="form-control select2" id="position" name="positionID" style="width: 100%;">
-                            <option></option>
+                            <option>No Selected</option>
                           </select>
                         </div>
                         <div class="col">
@@ -195,8 +202,11 @@
                             <option>Resigned</option>
                           </select>
                         </div>
+
                         </div>
                       </div>
+
+
                     </div>
                     <!-- EMPLOYEE INFO -->
                      <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab"> 
@@ -271,11 +281,8 @@
                       </div>
                       
                     </div>
-                    <!-- PAYROLL DETAILS -->              
-
+                    <!-- PAYROLL DETAILS -->     
                   </div>
-
-            
                     <div class="modal-footer">
                       <input type="hidden" name="employeeID" id="employeeID" />  
                       <input type="submit" name="action" id="action" class="btn btn-warning btn-rounded" value="Add" />   
@@ -294,6 +301,36 @@
 </div>
 </div>
 </div>
+
+<div class="modal fade" id="uploadpicture" tabindex="-1" role="dialog" aria-labelledby="uploadpictureModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form id="commentForm" method="post" enctype="multipart/form-data" action="<?php echo site_url('Uploadphoto/do_upload'); ?>">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="uploadpictureModalLabel">Select photo to upload</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col form-group">
+          <label>Filename:</label>
+          <input type="file" name="photo" class="file-upload-default" accept="image/png,image/jpeg" required>
+          <div class="input-group col-xs-12">
+            <input type="text" class="form-control file-upload-info" name="photo" disabled>
+            <span class="input-group-append">
+              <button class="file-upload-browse btn btn-warning" type="button">Choose File</button>
+            </span>
+          </div>
+        </div>
+        <div class="modal-footer">
+              <input type="hidden" name="empID" id="empID">  
+              <input type="submit" id="action" class="btn btn-warning btn-rounded" style="width:100%" value="Upload Photo" />   
+        </div> 
+      </div>
+     </form>
+  </div>
+</div>
  <script>
   $(function () {
     $('.select2').select2();
@@ -311,11 +348,11 @@
                         var html = '';
                         var i;
                         for(i=0; i<data.length; i++){
-						  if($("#hiddenPosition").val()==data[i].positionID){
+                          if($("#hiddenPosition").val()==data[i].positionID){
                             html += '<option value='+data[i].positionID+' selected>'+data[i].positiondescription+'</option>';
                           }else{
                             html += '<option value='+data[i].positionID+'>'+data[i].positiondescription+'</option>';
-						  }
+                          }
                         }
                         $('#position').html(html);
                     }

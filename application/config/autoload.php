@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$autoload['time_zone'] = date_default_timezone_set('Asia/Manila');
+
 /*
 | -------------------------------------------------------------------
 | AUTO-LOADER

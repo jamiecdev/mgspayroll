@@ -70,6 +70,19 @@
     resetToastPosition();
     $.toast({
       heading: 'Warning',
+      text: 'Department is currently in used!',
+      showHideTransition: 'slide',
+      icon: 'warning',
+      loaderBg: '#ffffff',
+      position: 'top-right',
+      hideAfter: 7000, 
+    })
+  };
+  showDeptExistToast = function() {
+    'use strict';
+    resetToastPosition();
+    $.toast({
+      heading: 'Warning',
       text: 'Department already exist.',
       showHideTransition: 'slide',
       icon: 'warning',
@@ -172,21 +185,6 @@
     $.toast({
       heading: 'Danger',
       text: 'File not supported! Please select a PDF File and try again.',
-      showHideTransition: 'slide',
-      icon: 'error',
-      loaderBg: '#ffffff',
-      position: 'top-right',
-      hideAfter: 7000 
-    });
-  }
-
-  showUploadReq = function() {
-    'use strict';
-
-    resetToastPosition();
-    $.toast({
-      heading: 'Danger',
-      text: 'Input a file.',
       showHideTransition: 'slide',
       icon: 'error',
       loaderBg: '#ffffff',

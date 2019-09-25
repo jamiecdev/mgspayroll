@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    function __construct(){
         parent::__construct();
         $this->load->model('Uploadpayslip_model','uploadpayslip_model');
+        
     } 
      
 		public function index() 
@@ -29,9 +30,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		    $payslip = file_get_contents($_FILES['userImage']['tmp_name']);
 		    $imageProperties = getimageSize($_FILES['userImage']['tmp_name']);
 
+		    $now = date("Y-m-d H:i:s");
+
 	        $data = array( 
 	        	
 	        	'employeeID' => $this->input->post('employeeID'),
+	        	'payslipuploaded' => $now,
 		        'payslip' => $payslip
 		     
 	        );  
