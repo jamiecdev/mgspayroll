@@ -26,13 +26,33 @@ class Employee_model extends CI_Model
 			$department = $this->db->query('
             SELECT * FROM department WHERE departmentstatus = "Active" 
         ');
+      $active = $this->db->query('
+            SELECT * FROM employee WHERE status ="Active" 
+        ');
+      $terminated = $this->db->query('
+            SELECT * FROM employee WHERE status ="Terminated" 
+        ');
+      $endo = $this->db->query('
+            SELECT * FROM employee WHERE status ="End of Contract" 
+        ');
+      $resigned = $this->db->query('
+            SELECT * FROM employee WHERE status ="Resigned" 
+        ');
 
 			$result1 = $employee->result();
 			$result2 = $position->result();
 			$result3 = $department->result();
+      $result4 = $active->result();
+      $result5 = $terminated->result();
+      $result6 = $endo->result();
+      $result7 = $resigned->result();
             return array('employee' => $result1
             	, 'position' => $result2 
               , 'department' => $result3
+              , 'active' => $result4
+              , 'terminated' => $result5
+              , 'endo' => $result6
+              , 'resigned' => $result7
             );
 		}
   

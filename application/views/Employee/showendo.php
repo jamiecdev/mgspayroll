@@ -44,7 +44,7 @@
                 </thead>
                 <tbody id="showdata">
                   <?php
-                        foreach ($results['active'] as $r) {
+                        foreach ($results['endo'] as $r) {
 
                           echo '<tr>';
                           echo '<td class="py-1 user-circle">

@@ -19,10 +19,10 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton2">
                 <h6 class="dropdown-header">Filter by</h6>
                 <a class="dropdown-item" href="<?php echo base_url(); ?>Employee">All</a>
-                <a class="dropdown-item" href="#">Active</a>
-                <a class="dropdown-item" >Terminated</a>
-                <a class="dropdown-item" >End of Contract</a>
-                <a class="dropdown-item" >Resigned</a>
+                <a class="dropdown-item" href="<?php echo base_url(); ?>Active">Active</a>
+                <a class="dropdown-item" href="<?php echo base_url(); ?>Terminated">Terminated</a>
+                <a class="dropdown-item" href="<?php echo base_url(); ?>Endo">End of Contract</a>
+                <a class="dropdown-item" href="<?php echo base_url(); ?>Resigned">Resigned</a>
               </div>
               <button class="btn btn-warning btn-rounded btn-sm" id="add_button" data-toggle="modal" data-target="#addModal"><i class="mdi mdi-account-plus "></i> New Employee</button>
             </div>
