@@ -10,7 +10,7 @@
 
   			$this->load->view('Template/Header',$data);
   			$id= $this->session->userdata('userdata')['employeeID'];
-  			$query = $this->db->query('SELECT * FROM payslip WHERE employeeID ='.$id);
+  			$query = $this->db->query('SELECT *,CONCAT(md5(payslipID),md5("mgspayroll")) as encryptID FROM payslip WHERE employeeID ='.$id);
          	$data['files'] = $query->result();
 			$this->load->view('Viewpayslip/Index',$data);
 			$this->load->view('Template/Footer');
@@ -18,21 +18,21 @@
 
 		public function preview() 
 		{ 
-			$data = array(
-				'title' => 'Preview Payslip'
-			);
+			
+			$auth = $this->input->get('auth');
+			$id = $this->input->get('id');
 
-  	/*		$this->load->view('Template/Header',$data);*/
-/*  	if(isset($_GET['payslipID'])) {*/
-		$id = $this->input->get('id');
-  			$query = $this->db->query("SELECT * FROM payslip WHERE payslipID ='".$id."'");
-  			$data['files'] = $query->result();
-				/*foreach ($data['files'] as $frow) {
-	         		header("Content-type: application/pdf");
-	       		 	echo $frow->payslip;
-	              }*/
-			$this->load->view('Viewpayslip/preview',$data);
-			$this->load->view('Template/Footer');
+			if($auth==md5($id).md5("mgspayroll")){
+				$query = $this->db->query('SELECT *  FROM payslip WHERE payslipID ='.$id);
+		  		$data['files'] = $query->result();
+					
+				$this->load->view('Viewpayslip/preview',$data);
+			}else{
+				 $this->load->view('error');
+			}
+
+	  		
+			
 		}
 	
 

@@ -7,7 +7,7 @@ class Uploadpayslip_model extends CI_Model
     public function getallposition()
         {
           $payslip = $this->db->query('
-            SELECT *
+            SELECT *,CONCAT(md5(payslip.payslipID),md5("mgspayroll")) as encryptID
             FROM payslip
             INNER JOIN employee
             ON payslip.employeeID=employee.employeeID

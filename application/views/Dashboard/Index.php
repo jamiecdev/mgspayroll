@@ -112,42 +112,16 @@
                             </figcaption>
                           </figure>
                         </div>
-                        <!-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
                           <figure class="effect-text-in">
-                            <img src="<?=base_url(); ?>assets/images/samples/300x300/12.jpg" alt="image"/>
+                            <img src="<?=base_url(); ?>assets/images/auth/12.jpg" alt="image"/>
                             <figcaption>
-                              <h4>Nature</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                              <!-- <h4>Being yourself</h4> -->
+                              <p>CUSTOMER SERVICE</p>
                             </figcaption>
                           </figure>
                         </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
-                          <figure class="effect-text-in">
-                            <img src="<?=base_url(); ?>assets/images/samples/300x300/13.jpg" alt="image"/>
-                            <figcaption>
-                              <h4>Routines</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                            </figcaption>
-                          </figure>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
-                          <figure class="effect-text-in">
-                            <img src="<?=base_url(); ?>assets/images/samples/300x300/14.jpg" alt="image"/>
-                            <figcaption>
-                              <h4>Life</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                            </figcaption>
-                          </figure>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
-                          <figure class="effect-text-in">
-                            <img src="<?=base_url(); ?>assets/images/samples/300x300/15.jpg" alt="image"/>
-                            <figcaption>
-                              <h4>Vision</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                            </figcaption>
-                          </figure>
-                        </div> -->
+        
                       </div>
                   </div>
                 </div>

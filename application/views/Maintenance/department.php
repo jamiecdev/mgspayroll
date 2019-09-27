@@ -12,7 +12,7 @@
         
           <div class="d-flex align-items-center justify-content-between flex-wrap border-bottom pb-3 mb-3">
             <div class="d-flex align-items-center">
-              <h6 class="mb-0 font-weight-bold"><i class="mdi mdi-account-multiple-outline"></i> Set Up Department</h6>
+              <h6 class="mb-0 font-weight-bold"><i class="mdi mdi-view-list"></i> List of Department</h6>
             </div>
             <div class="mt-3 mt-md-0">
               <button class="btn btn-warning btn-rounded btn-sm" id="add_button" data-toggle="modal" data-target="#setupdepartmentModal"><i class="mdi mdi-plus-circle-outline"></i> New Department</button>
@@ -43,8 +43,13 @@
 
                           echo '<tr>';
                           echo '<td>'.$r->description.'</td>';
-                          echo '<td><label class="badge badge-success">'.$r->departmentstatus.'</label></td>'; 
-                          echo '<td><button type="button" name="Update" id="'.$r->departmentID.'" class="btn btn-outline-warning department-edit" data-target="#setupdepartmentModal">View</button></td>' ;
+                          echo '<td>';
+                           if($r->departmentstatus=="Active"){
+                              echo  '<label class="badge badge-success">'.$r->departmentstatus.'</label></td>';
+                            }if($r->departmentstatus=="Inactive"){
+                              echo '<label class="badge badge-danger">'.$r->departmentstatus.'</label></td>';
+                            }
+                          echo '<td><button type="button" name="Update" id="'.$r->departmentID.'" class="btn btn-outline-warning department-edit" data-target="#setupdepartmentModal"><i class="mdi mdi-eye btn-icon-prepend"></i>View</button></td>' ;
                         }
                       ?>
                 </tbody>
@@ -61,7 +66,7 @@
   <div class="modal-dialog" role="document">
     <form id="commentForm" method="post" action="<?php echo site_url('Department/department_action'); ?>">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="background-color: #f6f7fb;">
         <h5 class="modal-title" id="setupdepartmentModalLabel">New Department</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -81,7 +86,8 @@
         </div>
       </div>
        <div class="modal-footer">
-              <input type="hidden" name="departmentID" id="departmentID" />  
+              <input type="hidden" name="departmentID" id="departmentID" />
+              <!-- <button type="submit" class="btn btn-warning btn-rounded btn-sm" name="action" id="action" ><i class="mdi mdi-plus-circle-outline"></i> Add</button>  --> 
               <input type="submit" name="action" id="action" class="btn btn-warning btn-rounded" value="Add" />   
           </div>
     </div>

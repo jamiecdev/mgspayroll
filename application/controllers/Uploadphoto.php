@@ -53,6 +53,9 @@
                 $config['max_size']      = 2048000;
                 $config['max_width']     = 100000;
                 $config['max_height']    = 100000;
+                $config['file_name'] = $this->input->post('empID');
+
+
 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
@@ -67,11 +70,11 @@
                 else{
                 	$data = array(
 
-                        'photo' => $_FILES['photo']['name']
+                        'photo' => $this->input->post('empID').'.'.pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION)
                     );  
                     $this->load->model('Employee_model');  
                     $this->Employee_model->update($this->input->post('empID'), $data); 
-                    $this->session->set_flashdata('employee', 'success'); 
+                    $this->session->set_flashdata('photo', 'upload'); 
                     redirect("Employee"); 
                 }
         }

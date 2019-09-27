@@ -31,6 +31,7 @@
           <div class="col-12">
             <div class="table-responsive">
               <table id="order-listing" class="table">
+                <span><?php if($this->session->flashdata('photo')=="upload") echo '<script type="text/javascript"> showPhotoToast() </script>';?></span>
                 <span><?php if($this->session->flashdata('employee')=="success") echo '<script type="text/javascript"> showSuccessToast() </script>';?></span>
                 <thead>
                   <tr>
@@ -57,8 +58,15 @@
                             
                           echo '<td>'.$r->contactinfo.'</td>'; 
                           echo '<td>'.$r->hireddate.'</td>';  
-                          echo '<td><label class="badge badge-success">'.$r->status.'</label></td>'; 
-                          echo '<td><button type="button" name="update" id="'.$r->employeeID.'" class="btn btn-outline-warning employee-edit" data-target="#addModal">View</button></td>' ;
+                          echo '<td>';
+                          if($r->status=="Active"){
+                              echo  '<label class="badge badge-success">'.$r->status.'</label></td>';
+                            }else{
+                              echo '<label class="badge badge-danger">'.$r->status.'</label></td>';
+                            }
+
+                            /*'<label class="badge badge-success">'.$r->status.'</label></td>'; */
+                          echo '<td><button type="button" name="update" id="'.$r->employeeID.'" class="btn btn-outline-warning employee-edit" data-target="#addModal"><i class="mdi mdi-eye btn-icon-prepend"></i>View</button></td>' ;
                         }
                       ?>
                 </tbody>
