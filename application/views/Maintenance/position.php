@@ -12,7 +12,7 @@
         
           <div class="d-flex align-items-center justify-content-between flex-wrap border-bottom pb-3 mb-3">
             <div class="d-flex align-items-center">
-              <h6 class="mb-0 font-weight-bold"><i class="mdi mdi-account-multiple-outline"></i> Set Up Position</h6>
+              <h6 class="mb-0 font-weight-bold"><i class="mdi mdi-view-list"></i> List of Position</h6>
             </div>
             <div class="mt-3 mt-md-0">
               <button class="btn btn-warning btn-rounded btn-sm" id="add_button" data-toggle="modal" data-target="#setuppositionModal"><i class="mdi mdi-plus-circle-outline"></i> New Position</button>
@@ -38,7 +38,7 @@
                           echo '<tr>';
                           echo '<td>'.$r->description.'</td>'; 
                           echo '<td>'.$r->positiondescription.'</td>';
-                          echo '<td><button type="button" name="Update" id="'.$r->positionID.'" class="btn btn-outline-warning position-edit" data-target="#setuppositionModal">View</button></td>' ;
+                          echo '<td><button type="button" name="Update" id="'.$r->positionID.'" class="btn btn-outline-warning position-edit" data-target="#setuppositionModal"><i class="mdi mdi-eye btn-icon-prepend"></i>View</button></td>' ;
                         }
                       ?>
                 </tbody>
@@ -55,7 +55,7 @@
   <div class="modal-dialog" role="document">
     <form id="commentForm" method="post" action="<?php echo site_url('Position/position_action'); ?>">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="background-color: #f6f7fb;">
         <h5 class="modal-title" id="setuppositionModalLabel">New Position</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -64,7 +64,7 @@
       <div class="modal-body">
             <div class="form-group">
             <label>Department</label>
-            <select class="form-control select2" name="departmentID" id="departmentID" style="width: 100%;">
+            <select class="form-control select2" name="departmentID" id="description" style="width: 100%;">
                             <?php
                             foreach($results['department'] as $department)
                             {

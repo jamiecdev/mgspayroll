@@ -11160,6 +11160,7 @@ fieldset:disabled .wizard > .actions a,
   color: #fff;
   background-color: #00BBE0;
   border-color: #00BBE0;
+  border-radius: 10px;
 }
 
 .btn-info:hover {
@@ -11533,7 +11534,7 @@ fieldset:disabled .wizard > .actions a,
 }
 
 .btn-outline-warning:hover {
-  color: #212529;
+  color: #fff;
   background-color: #f29d56;
   border-color: #f29d56;
 }
@@ -21145,10 +21146,11 @@ code {
 /* Badges */
 .badge {
   border-radius: 3px;
-  font-size: .9em;
-  line-height: 1;
+  font-size: .85em;
+  line-height: 1.2;
   padding: 0.187rem 0.4rem;
   font-weight: 500;
+  width: 95px;
 }
 
 .badge.badge-pill {

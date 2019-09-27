@@ -12,7 +12,7 @@
         
           <div class="d-flex align-items-center justify-content-between flex-wrap border-bottom pb-3 mb-3">
             <div class="d-flex align-items-center">
-              <h6 class="mb-0 font-weight-bold"><i class="mdi mdi-account-multiple-outline"></i> View Payslip</h6>
+              <h6 class="mb-0 font-weight-bold"><i class="mdi mdi-file-document-box"></i> List of Payslip</h6>
             </div>
         </div>
         <div class="row">
@@ -35,7 +35,7 @@
                           echo '<tr>';
                           echo '<td>'.$frow->payslipuploaded.'</td>';
                           /* echo '<td><a href="Viewpayslip/preview" id="'.$frow->payslipID.'" >View</a></td>' ;*/
-                          echo '<td><a class="btn btn-outline-warning btn-fw" href="Viewpayslip/preview?id='.$frow->payslipID.'" >View</a></td>' ;
+                          echo '<td><a href="Viewpayslip/preview?auth='.$frow->encryptID.'&id='.$frow->payslipID.'" target="_blank" ><button type="button" class="btn btn-outline-warning btn-fw" style="margin-right: 10px;"><i class="mdi mdi-eye btn-icon-prepend"></i>Preview</button></a></td>' ;
                          /* echo '<td><object data="data:application/pdf;base64,'.base64_encode($frow['payslip'] ).'" type="application/pdf" style="height:200px;width:60%"></object></td>';*/
                         }
                       ?>

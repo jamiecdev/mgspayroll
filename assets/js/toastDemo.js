@@ -26,6 +26,19 @@
       hideAfter: 7000, 
     });
   };
+  showPhotoToast = function() {
+    'use strict';
+    resetToastPosition();
+    $.toast({
+      heading: 'Success',
+      text: "Photo successfully uploaded!",
+      showHideTransition: 'slide',
+      icon: 'success',
+      loaderBg: '#ffffff',
+      position: 'top-right',
+      hideAfter: 7000, 
+    })
+  };
   showDepartmentToast = function() {
     'use strict';
     resetToastPosition();

@@ -17,6 +17,7 @@
                   <form id="commentForm" method="post" enctype="multipart/form-data" action="<?php echo site_url('Uploadpayslip/addpayslip'); ?>">
                   <div class="form-group">
                         <div class="row">
+                          
                           <div class="col form-group">
                           <label for="departmentID">Department</label>
                           <select class="form-control select2" id="description" name="departmentID" style="width: 100%;" required>
@@ -46,20 +47,28 @@
                         <div class="col form-group">
                           <label>Payslip</label>
                           <input type="file" name="userImage" id="payslip" class="file-upload-default" accept="application/pdf" required>
-                          <div class="input-group col-xs-12">
+                          <div class="input-group col-xs-6">
                             <input type="text" class="form-control file-upload-info" disabled>
                             <span class="input-group-append">
                               <button class="file-upload-browse btn btn-warning" type="button">Choose File</button>
                             </span>
+                            <input type="submit" name="action" id="action" class="btn btnUpload btn-success btn-icon-text ml-2" value="Upload" /> 
+                            <!-- <input type="submit" name="action" id="action" class="btn btn-success btn-icon-text ml-2" value="Upload"/>  -->
                           </div>
                         </div>
 
+                       <!--  <div class="col form-group">
+                          <label>w</label>
+                          
+                        </div> -->
 
+                        
                         </div>
+
                   </div>
-                  <div class="modal-footer">
+                  <!-- <div class="modal-footer">
         <input type="submit" name="action" id="action" class="btn btnUpload btn-warning btn-rounded" value="Upload" /> 
-        </div>
+        </div> -->
       </form>
                 </div>
               </div>
@@ -69,7 +78,7 @@
       <div class="card-body test-card">
           <div class="d-flex align-items-center justify-content-between flex-wrap border-bottom pb-3 mb-3">
             <div class="d-flex align-items-center">
-              <h6 class="mb-0 font-weight-bold"><i class="mdi mdi-account-multiple-outline"></i> Upload Payslip</h6>
+              <h6 class="mb-0 font-weight-bold"><i class="mdi mdi-file-document-box"></i> List of Payslip</h6>
             </div>
         </div>
 
@@ -98,8 +107,8 @@
                           echo '<td>'.$frow->positiondescription.'</td>';
                           echo '<td>'.$frow->description.'</td>';
                           echo '<td>'.$frow->payslipuploaded.'</td>';
-                          echo '<td><a class="btn btn-outline-warning btn-fw" style="margin-right: 10px;" href="Viewpayslip/preview?id='.$frow->payslipID.'" >View</a>
-                          <a class="btn btn-outline-danger btn-fw" style="margin-right: 50px;" href="Uploadpayslip/deletedata?id='.$frow->payslipID.'" >Delete</a></td>';
+                          echo '<td><a href="Viewpayslip/preview?auth='.$frow->encryptID.'&id='.$frow->payslipID.'" target="_blank" ><button type="button" class="btn btn-outline-warning btn-fw" style="margin-right: 10px;"><i class="mdi mdi-eye btn-icon-prepend"></i>Preview</button></a>
+                          <a class="btn btn-outline-danger btn-fw" style="margin-right: 50px;" href="Uploadpayslip/deletedata?id='.$frow->payslipID.'" ><i class="mdi mdi-close btn-icon-prepend"></i>Delete</a></td>';
 
                         }
                       ?>

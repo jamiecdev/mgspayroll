@@ -1,19 +1,17 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- base:css -->
-  <link rel="stylesheet" href="<?php echo config_item('base_url'); ?>/assets/vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="<?php echo config_item('base_url'); ?>/assets/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="<?=base_url(); ?>assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="<?=base_url(); ?>assets/vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="<?php echo config_item('base_url'); ?>/assets/css/vertical-layout-light/style.css">
+  <link rel="stylesheet" href="<?=base_url(); ?>assets/css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="<?php echo config_item('base_url'); ?>/assets/images/favicon.png" />
+  <link rel="shortcut icon" href="<?=base_url(); ?>assets/images/favicon.png" />
 </head>
 
 <body>
@@ -33,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="row mt-5">
               <div class="col-12 text-center mt-xl-2">
-                <a class="text-white font-weight-medium" href="<?php echo config_item('base_url'); ?>/Dashboard">Return to Dashboard</a>
+                <a class="text-white font-weight-medium" href="<?=base_url(); ?>Dashboard">Return to Dashboard</a>
               </div>
             </div>
             <div class="row mt-5">
@@ -50,14 +48,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
   <!-- container-scroller -->
   <!-- base:js -->
-  <script src="<?php echo config_item('base_url'); ?>/assets/vendors/js/vendor.bundle.base.js"></script>
+  <script src="<?=base_url(); ?>assets/vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- inject:js -->
-  <script src="<?php echo config_item('base_url'); ?>/assets/js/off-canvas.js"></script>
-  <script src="<?php echo config_item('base_url'); ?>/assets/js/hoverable-collapse.js"></script>
-  <script src="<?php echo config_item('base_url'); ?>/assets/js/template.js"></script>
-  <script src="<?php echo config_item('base_url'); ?>/assets/js/settings.js"></script>
-  <script src="<?php echo config_item('base_url'); ?>/assets/js/todolist.js"></script>
+  <script src="<?=base_url(); ?>assets/js/off-canvas.js"></script>
+  <script src="<?=base_url(); ?>assets/js/hoverable-collapse.js"></script>
+  <script src="<?=base_url(); ?>assets/js/template.js"></script>
+  <script src="<?=base_url(); ?>assets/js/settings.js"></script>
+  <script src="<?=base_url(); ?>assets/js/todolist.js"></script>
   <!-- endinject -->
 </body>
 </html>
