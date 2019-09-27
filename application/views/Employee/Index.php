@@ -36,6 +36,8 @@
                 <thead>
                   <tr>
                       <th>User</th>
+                      <th>Position</th>
+                      <th>Department</th>
                       <th>Contact No.</th>
                       <th>Hired Date</th>
                       <th>Status</th>
@@ -55,7 +57,8 @@
                               echo '<img src="uploads/'.$r->photo.'" alt="image"></a>'.' '.$r->firstname.' '.$r->lastname.'</td>';
                             }
 
-                            
+                          echo '<td>'.$r->positiondescription.'</td>';
+                          echo '<td>'.$r->description.'</td>';  
                           echo '<td>'.$r->contactinfo.'</td>'; 
                           echo '<td>'.$r->hireddate.'</td>';  
                           echo '<td>';

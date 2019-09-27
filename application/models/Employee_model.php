@@ -20,7 +20,9 @@ class Employee_model extends CI_Model
         ');
 			$employee = $this->db->query('
             SELECT * FROM employee
-            LEFT JOIN department
+            INNER JOIN position
+            ON employee.positionID=position.positionID
+            INNER JOIN department
             ON employee.departmentID=department.departmentID
         ');
 			$department = $this->db->query('
