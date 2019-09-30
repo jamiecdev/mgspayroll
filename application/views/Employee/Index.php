@@ -1,36 +1,36 @@
 <div class="main-panel">
   <div class="content-wrapper">
     <nav aria-label="breadcrumb">
-                      <ol class="breadcrumb breadcrumb-custom bg-inverse-primary">
-                        <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>Dashboard"><i class="mdi mdi-view-dashboard"></i> Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><span><i class="mdi mdi-account-multiple-outline"></i> Employee Records</span></li>
-                      </ol>
-                    </nav>
+      <ol class="breadcrumb breadcrumb-custom bg-inverse-primary">
+        <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>Dashboard"><i class="mdi mdi-view-dashboard"></i> Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><span><i class="mdi mdi-account-multiple-outline"></i> Employee Records</span></li>
+      </ol>
+    </nav>
     <!-- DataTable -->
     <div class="card">
       <div class="card-body test-card">
-        
-          <div class="d-flex align-items-center justify-content-between flex-wrap border-bottom pb-3 mb-3">
-            <div class="d-flex align-items-center">
-              <h6 class="mb-0 font-weight-bold"><i class="mdi mdi-account-multiple-outline"></i> Employee Records</h6>
+        <div class="d-flex align-items-center justify-content-between flex-wrap border-bottom pb-3 mb-3">
+          <div class="d-flex align-items-center">
+            <h6 class="mb-0 font-weight-bold"><i class="mdi mdi-account-multiple-outline"></i> Employee Records</h6>
+          </div>
+          <div class="mt-3 mt-md-0">
+            <button class="btn btn-sm text-muted border-0 dropdown-toggle px-0" type="button" id="dropdownMenuSizeButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 15px;" >Filter by </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton2">
+              <h6 class="dropdown-header">Filter by</h6>
+              <a class="dropdown-item" href="<?php echo base_url(); ?>Employee">All</a>
+              <a class="dropdown-item" href="<?php echo base_url(); ?>Active">Active</a>
+              <a class="dropdown-item" href="<?php echo base_url(); ?>Terminated">Terminated</a>
+              <a class="dropdown-item" href="<?php echo base_url(); ?>Endo">End of Contract</a>
+              <a class="dropdown-item" href="<?php echo base_url(); ?>Resigned">Resigned</a>
             </div>
-            <div class="mt-3 mt-md-0">
-              <button class="btn btn-sm text-muted border-0 dropdown-toggle px-0" type="button" id="dropdownMenuSizeButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 15px;" >Filter by </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton2">
-                <h6 class="dropdown-header">Filter by</h6>
-                <a class="dropdown-item" href="<?php echo base_url(); ?>Employee">All</a>
-                <a class="dropdown-item" href="<?php echo base_url(); ?>Active">Active</a>
-                <a class="dropdown-item" href="<?php echo base_url(); ?>Terminated">Terminated</a>
-                <a class="dropdown-item" href="<?php echo base_url(); ?>Endo">End of Contract</a>
-                <a class="dropdown-item" href="<?php echo base_url(); ?>Resigned">Resigned</a>
-              </div>
-              <button class="btn btn-warning btn-rounded btn-sm" id="add_button" data-toggle="modal" data-target="#addModal"><i class="mdi mdi-account-plus "></i> New Employee</button>
-            </div>
+            <button class="btn btn-warning btn-rounded btn-sm" id="add_button" data-toggle="modal" data-target="#addModal"><i class="mdi mdi-account-plus "></i> New Employee</button>
+          </div>
         </div>
         <div class="row">
           <div class="col-12">
             <div class="table-responsive">
               <table id="order-listing" class="table">
+                <span><?php if($this->session->flashdata('img')=="error") echo '<script type="text/javascript"> showUploadPhotoError() </script>';?></span>
                 <span><?php if($this->session->flashdata('photo')=="upload") echo '<script type="text/javascript"> showPhotoToast() </script>';?></span>
                 <span><?php if($this->session->flashdata('employee')=="success") echo '<script type="text/javascript"> showSuccessToast() </script>';?></span>
                 <thead>
@@ -78,142 +78,139 @@
           </div>
         </div>
 
-          <div class="modal fade" id="addModal" role="dialog" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-            
-              <!-- Modal content-->
-              <form id="commentForm" method="post" action="<?php echo site_url('Employee/employee_action'); ?>">
+        <!-- MODAL -->
+        <div class="modal fade" id="addModal" role="dialog" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl" role="document">
+            <!-- Modal content-->
+            <form id="commentForm" method="post" action="<?php echo site_url('Employee/employee_action'); ?>">
               <div class="modal-content">
                 <div class="modal-header" style="background-color: #f6f7fb;">
                   <h3 class="modal-title" id="ModalLabel">New Employee</h3>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;
-                  </button>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
                 </div>
                 <fieldset>
                 <div class="modal-body">
                   <div class="row grid-margin">
-                  <div class="col-lg-12">
-
+                    <div class="col-lg-12">
                     <ul class="nav nav-pills nav-pills-success" id="pills-tab" role="tablist">
-                    <li class="nav-item">
-                      <a class="nav-link active" id="pills-info-tab" data-toggle="pill" href="#pills-info" role="tab" aria-controls="pills-info" aria-selected="true">Employee Info</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="pills-login-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="false">Login Info</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="pills-detail-tab" data-toggle="pill" href="#pills-detail" role="tab" aria-controls="pills-detail" aria-selected="false">Payroll Details</a>
-                    </li>
-                  </ul>
+                      <li class="nav-item">
+                        <a class="nav-link active" id="pills-info-tab" data-toggle="pill" href="#pills-info" role="tab" aria-controls="pills-info" aria-selected="true">Employee Info</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="pills-login-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="false">Login Info</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="pills-detail-tab" data-toggle="pill" href="#pills-detail" role="tab" aria-controls="pills-detail" aria-selected="false">Payroll Details</a>
+                      </li>
+                    </ul>
 
                   <div class="tab-content" id="pills-tabContent">
 
                     <!-- EMPLOYEE INFO -->
                     <div class="tab-pane fade show active" id="pills-info" role="tabpanel" aria-labelledby="pills-info-tab"> 
-
                       <div class="form-group">
                         <div class="row">
-                        <div class="col form-group">
-                          <label for="firstname">First Name</label>
-                          <input id="firstname" type="text" name="firstname" class="form-control input" autocomplete="off"  required>
-                        </div>
-                        <div class="col">
-                          <label for="middlename">Middle Name</label>
-                          <input id="middlename" type="text" name="middlename" class="form-control input" autocomplete="off">
-                        </div>
-                        <div class="col form-group">
-                          <label for="lastname">Last Name</label>
-                          <input id="lastname" type="text" name="lastname" class="form-control input" autocomplete="off" required>
-                        </div>
-                        <div class="col">
-                          <label for="gender">Gender</label>
-                          <select class="form-control" name="gender" id="gender" required>
-                            <option>Male</option>
-                            <option>Female</option>
-                          </select>
-                        </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <div class="row">
-                        <div class="col">
-                          <label for="housenumber">Unit/House No.</label>
-                          <input id="housenumber" type="text" name="housenumber" class="form-control input" autocomplete="off">
-                        </div>
-                        <div class="col form-group">
-                          <label for="streetname">Building/Street Name</label>
-                          <input id="streetname" type="text" name="streetname" class="form-control input" autocomplete="off" required>
-                        </div>
-                        <div class="col form-group">
-                          <label for="barangay">Barangay</label>
-                          <input id="barangay" type="text" name="barangay" class="form-control input" autocomplete="off" required>
-                        </div>
-                        <div class="col form-group">
-                          <label for="city">City/Municipality</label>
-                          <input id="city" type="text" name="city" class="form-control input" autocomplete="off" required>
-                        </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <div class="row">
-                        <div class="col form-group">
-                          <label for="birthdate">Birthdate</label>
-                          <input id="birthdate" type="date" name="birthdate" class="form-control"  required>
-                        </div>
-                        <div class="col form-group">
-                          <label for="contactinfo">Contact No.</label>
-                          <input id="contactinfo" type="text" name="contactinfo" class="form-control" autocomplete="off" required>
-                        </div>
-                        <div class="col">
-                          <label for="civilstatus">Civil Status</label>
-                          <select class="form-control" name="civilstatus" id="civilstatus">
-                            <option>Single</option>
-                            <option>Married</option>
-                          </select>
-                        </div>
                           <div class="col form-group">
-                          <label for="citizenship">Citizenship</label>
-                          <input id="citizenship" type="text" name="citizenship" class="form-control input" autocomplete="off" required>
-                        </div>
+                            <label for="firstname">First Name</label>
+                            <input id="firstname" type="text" name="firstname" class="form-control input" autocomplete="off"  required>
+                          </div>
+                          <div class="col">
+                            <label for="middlename">Middle Name</label>
+                            <input id="middlename" type="text" name="middlename" class="form-control input" autocomplete="off">
+                          </div>
+                          <div class="col form-group">
+                            <label for="lastname">Last Name</label>
+                            <input id="lastname" type="text" name="lastname" class="form-control input" autocomplete="off" required>
+                          </div>
+                          <div class="col">
+                            <label for="gender">Gender</label>
+                            <select class="form-control" name="gender" id="gender" required>
+                              <option>Male</option>
+                              <option>Female</option>
+                            </select>
+                          </div>
                         </div>
                       </div>
 
                       <div class="form-group">
                         <div class="row">
-                        <div class="col form-group">
-                          <label for="hireddate">Hired Date</label>
-                          <input id="hireddate" type="date" name="hireddate" class="form-control"  required>
+                          <div class="col">
+                            <label for="housenumber">Unit/House No.</label>
+                            <input id="housenumber" type="text" name="housenumber" class="form-control input" autocomplete="off">
+                          </div>
+                          <div class="col form-group">
+                            <label for="streetname">Building/Street Name</label>
+                            <input id="streetname" type="text" name="streetname" class="form-control input" autocomplete="off" required>
+                          </div>
+                          <div class="col form-group">
+                            <label for="barangay">Barangay</label>
+                            <input id="barangay" type="text" name="barangay" class="form-control input" autocomplete="off" required>
+                          </div>
+                          <div class="col form-group">
+                            <label for="city">City/Municipality</label>
+                            <input id="city" type="text" name="city" class="form-control input" autocomplete="off" required>
+                          </div>
                         </div>
-                        <div class="col">
-                          <label for="description">Department</label>
-                          <select class="form-control select2" id="description" name="departmentID" style="width: 100%;">
-                            <?php
-                            foreach($results['department'] as $department)
-                            {
-                            echo '<option value="'.$department->departmentID.'">'.$department->description.'</option>';
-                            }
-                            ?>  
-                          </select>
-                        </div>
-                        <div class="col">
-                          <label for="positionID">Position</label>
-                          <input type="hidden" id="hiddenPosition" name="hiddenPosition">
-                          <select class="form-control select2" id="position" name="positionID" style="width: 100%;">
-                            <option>No Selected</option>
-                          </select>
-                        </div>
-                        <div class="col">
-                          <label for="status">Status</label>
-                          <select class="form-control" name="status" id="status">
-                            <option>Active</option>
-                            <option>Terminated</option>
-                            <option>End of Contract</option>
-                            <option>Resigned</option>
-                          </select>
-                        </div>
+                      </div>
 
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col form-group">
+                            <label for="birthdate">Birthdate</label>
+                            <input id="birthdate" type="date" name="birthdate" class="form-control"  required>
+                          </div>
+                          <div class="col form-group">
+                            <label for="contactinfo">Contact No.</label>
+                            <input id="contactinfo" type="text" name="contactinfo" class="form-control" autocomplete="off" required>
+                          </div>
+                          <div class="col">
+                            <label for="civilstatus">Civil Status</label>
+                            <select class="form-control" name="civilstatus" id="civilstatus">
+                              <option>Single</option>
+                              <option>Married</option>
+                            </select>
+                          </div>
+                          <div class="col form-group">
+                            <label for="citizenship">Citizenship</label>
+                            <input id="citizenship" type="text" name="citizenship" class="form-control input" autocomplete="off" required>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col form-group">
+                            <label for="hireddate">Hired Date</label>
+                            <input id="hireddate" type="date" name="hireddate" class="form-control"  required>
+                          </div>
+                          <div class="col">
+                            <label for="description">Department</label>
+                            <select class="form-control select2" id="description" name="departmentID" style="width: 100%;">
+                              <option>No Selected</option>
+                              <?php
+                              foreach($results['department'] as $department)
+                              {
+                              echo '<option value="'.$department->departmentID.'">'.$department->description.'</option>';
+                              }
+                              ?>  
+                            </select>
+                          </div>
+                          <div class="col">
+                            <label for="positionID">Position</label>
+                            <input type="hidden" id="hiddenPosition" name="hiddenPosition">
+                            <select class="form-control select2" id="position" name="positionID" style="width: 100%;">
+                              <option>No Selected</option>
+                            </select>
+                          </div>
+                          <div class="col">
+                            <label for="status">Status</label>
+                            <select class="form-control" name="status" id="status">
+                              <option>Active</option>
+                              <option>Terminated</option>
+                              <option>End of Contract</option>
+                              <option>Resigned</option>
+                            </select>
+                          </div>
                         </div>
                       </div>
 
@@ -342,34 +339,35 @@
      </form>
   </div>
 </div>
- <script>
+<script>
   $(function () {
     $('.select2').select2();
 
     $('#description').change(function(){ 
-                var id=$(this).val();
-                $.ajax({
-                    url : "<?php echo site_url('Employee/get_position');?>",
-                    method : "POST",
-                    data : {id: id},
-                    async : true,
-                    dataType : 'json',
-                    success: function(data){
-                         
-                        var html = '';
-                        var i;
-                        for(i=0; i<data.length; i++){
-                          if($("#hiddenPosition").val()==data[i].positionID){
-                            html += '<option value='+data[i].positionID+' selected>'+data[i].positiondescription+'</option>';
-                          }else{
-                            html += '<option value='+data[i].positionID+'>'+data[i].positiondescription+'</option>';
-                          }
-                        }
-                        $('#position').html(html);
-                    }
-                });
-                return false;
-            });
+      var id=$(this).val();
+      $.ajax({
+          url : "<?php echo site_url('Employee/get_position');?>",
+          method : "POST",
+          data : {id: id},
+          async : true,
+          dataType : 'json',
+          success: function(data){
+               
+              var html = '';
+              var i;
+              for(i=0; i<data.length; i++){
+                if($("#hiddenPosition").val()==data[i].positionID){
+                  html += '<option value='+data[i].positionID+' selected>'+data[i].positiondescription+'</option>';
+                }else{
+                  html += '<option value='+data[i].positionID+'>'+data[i].positiondescription+'</option>';
+                }
+              }
+              $('#position').html(html);
+          }
+      });
+      return false;
+    });
+
   });
 </script>
               

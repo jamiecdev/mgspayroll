@@ -25,14 +25,11 @@ class Login_model extends CI_Model
 		}
 	}
 
-	function validate($username,$password){
-    /*$this->db->where('username',$username);
-    $this->db->where('password',$password);
-    $this->db->where('status = "Active"',$status);*/
-    /*$result = $this->db->get('employee');*/
-    $result = $this->db->query('select * from employee LEFT JOIN position ON position.positionID=employee.positionID LEFT JOIN department ON department.departmentID=employee.departmentID where username="'.$username.
-    				 '" AND password="'.$password.'"');
-    return $result;
+	function validate($username,$password)
+	{
+	    $result = $this->db->query('
+	    	select * from employee LEFT JOIN position ON position.positionID=employee.positionID LEFT JOIN department ON department.departmentID=employee.departmentID where username="'.$username.'" AND password="'.$password.'"');
+	    return $result;
   }
 }
 ?>

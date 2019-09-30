@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      
 		public function index() 
 		{ 
-		  $data = array(
+		  	$data = array(
 				'title' => 'Upload Payslip'
 			);
 
@@ -23,7 +23,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->load->view('Template/Footer',  $data);
 
 		} 
-
 
 	    public function addpayslip()
 	    {
@@ -47,30 +46,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	        redirect("Uploadpayslip");
 
 	    }
-	    
 
 	    public function fetch_single_id()  
 	    {  
-           $output = array();  
-           $this->load->model("Uploadpayslip_model");  
-           $data = $this->Uploadpayslip_model->fetch_single_user($_POST["employeeID"]);  
-           foreach($data as $r)  
-           { 
+            $output = array();  
+            $this->load->model("Uploadpayslip_model");  
+            $data = $this->Uploadpayslip_model->fetch_single_user($_POST["employeeID"]);  
+            foreach($data as $r)  
+            { 
                 $output['employeeID'] = $r->employeeID;
-           }  
-           echo json_encode($output);  
-	    }
+            }  
+            echo json_encode($output);  
 
+	    }
 
 	    public function deletedata()
 		{
-		   $this->load->model('Uploadpayslip_model');
-		   $id = $this->input->get('id');
-		   $this->Uploadpayslip_model->deleterecord($id);
-		   redirect("Uploadpayslip");
+		   	$this->load->model('Uploadpayslip_model');
+		   	$id = $this->input->get('id');
+		   	$this->Uploadpayslip_model->deleterecord($id);
+		  	redirect("Uploadpayslip");
 		}
-
-		  
 
 		public function get_employeename()
 		{

@@ -29,16 +29,36 @@ class Employee_model extends CI_Model
             SELECT * FROM department WHERE departmentstatus = "Active" 
         ');
       $active = $this->db->query('
-            SELECT * FROM employee WHERE status ="Active" 
+            SELECT * FROM employee 
+            INNER JOIN position
+            ON employee.positionID=position.positionID
+            INNER JOIN department
+            ON employee.departmentID=department.departmentID
+            WHERE status ="Active" 
         ');
       $terminated = $this->db->query('
-            SELECT * FROM employee WHERE status ="Terminated" 
+            SELECT * FROM employee
+            INNER JOIN position
+            ON employee.positionID=position.positionID
+            INNER JOIN department
+            ON employee.departmentID=department.departmentID
+            WHERE status ="Terminated" 
         ');
       $endo = $this->db->query('
-            SELECT * FROM employee WHERE status ="End of Contract" 
+            SELECT * FROM employee 
+            INNER JOIN position
+            ON employee.positionID=position.positionID
+            INNER JOIN department
+            ON employee.departmentID=department.departmentID
+            WHERE status ="End of Contract" 
         ');
       $resigned = $this->db->query('
-            SELECT * FROM employee WHERE status ="Resigned" 
+            SELECT * FROM employee 
+            INNER JOIN position
+            ON employee.positionID=position.positionID
+            INNER JOIN department
+            ON employee.departmentID=department.departmentID
+            WHERE status ="Resigned" 
         ');
 
 			$result1 = $employee->result();
@@ -58,25 +78,26 @@ class Employee_model extends CI_Model
             );
 		}
   
-
   	public function addemployee($data)  
-	    {  
-	       $this->db->insert('employee', $data);  
-	    }
+    {  
+       $this->db->insert('employee', $data);  
+    }
 
     public function fetch_single_user($employeeID)  
-        {  
-           $this->db->where("employeeID", $employeeID);  
-           $query=$this->db->get('employee');  
-           return $query->result();  
-        }  
+    {  
+       $this->db->where("employeeID", $employeeID);  
+       $query=$this->db->get('employee');  
+       return $query->result();  
+    } 
+
     public function update($employeeID, $data)  
-        {  
-           $this->db->where("employeeID", $employeeID);  
-           $this->db->update("employee", $data);  
-      	}
+    {  
+       $this->db->where("employeeID", $employeeID);  
+       $this->db->update("employee", $data);  
+  	}
         
-    public function get_position($departmentID){
+    public function get_position($departmentID)
+    {
         $query = $this->db->get_where('position', array('departmentID' => $departmentID));
         return $query;
     }

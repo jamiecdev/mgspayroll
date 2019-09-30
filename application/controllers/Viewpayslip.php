@@ -18,7 +18,6 @@
 
 		public function preview() 
 		{ 
-			
 			$auth = $this->input->get('auth');
 			$id = $this->input->get('id');
 
@@ -30,11 +29,6 @@
 			}else{
 				 $this->load->view('error');
 			}
-
-	  		
-			
 		}
-	
-
-}
+	}
 ?> 

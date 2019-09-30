@@ -21,5 +21,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->load->view('Employee/showendo', $data);
 			$this->load->view('Template/Footer');
 		} 
-}     
+	}     
 ?>

@@ -83,7 +83,7 @@
     resetToastPosition();
     $.toast({
       heading: 'Warning',
-      text: 'Department is currently in used!',
+      text: 'Department is currently in use!',
       showHideTransition: 'slide',
       icon: 'warning',
       loaderBg: '#ffffff',
@@ -198,6 +198,21 @@
     $.toast({
       heading: 'Danger',
       text: 'File not supported! Please select a PDF File and try again.',
+      showHideTransition: 'slide',
+      icon: 'error',
+      loaderBg: '#ffffff',
+      position: 'top-right',
+      hideAfter: 7000 
+    });
+  }
+
+  showUploadPhotoError = function() {
+    'use strict';
+
+    resetToastPosition();
+    $.toast({
+      heading: 'Danger',
+      text: 'File not supported! Please select a JPEG or PNG File and try again.',
       showHideTransition: 'slide',
       icon: 'error',
       loaderBg: '#ffffff',

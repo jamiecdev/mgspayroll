@@ -31,11 +31,14 @@
           <div class="col-12">
             <div class="table-responsive">
               <table id="order-listing" class="table">
+                <span><?php if($this->session->flashdata('img')=="error") echo '<script type="text/javascript"> showUploadPhotoError() </script>';?></span>
                 <span><?php if($this->session->flashdata('photo')=="upload") echo '<script type="text/javascript"> showPhotoToast() </script>';?></span>
                 <span><?php if($this->session->flashdata('employee')=="success") echo '<script type="text/javascript"> showSuccessToast() </script>';?></span>
                 <thead>
                   <tr>
                       <th>User</th>
+                      <th>Position</th>
+                      <th>Department</th>
                       <th>Contact No.</th>
                       <th>Hired Date</th>
                       <th>Status</th>
@@ -55,7 +58,8 @@
                               echo '<img src="uploads/'.$r->photo.'" alt="image"></a>'.' '.$r->firstname.' '.$r->lastname.'</td>';
                             }
 
-                            
+                          echo '<td>'.$r->positiondescription.'</td>';
+                          echo '<td>'.$r->description.'</td>';  
                           echo '<td>'.$r->contactinfo.'</td>'; 
                           echo '<td>'.$r->hireddate.'</td>';  
                           echo '<td>';
@@ -186,6 +190,7 @@
                         <div class="col">
                           <label for="description">Department</label>
                           <select class="form-control select2" id="description" name="departmentID" style="width: 100%;">
+                            <option>No Selected</option>
                             <?php
                             foreach($results['department'] as $department)
                             {
