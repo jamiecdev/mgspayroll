@@ -8,6 +8,12 @@
       </ol>
     </nav>
     
+    <?php if($this->session->flashdata('error')!=""){ ?>
+      <div class="alert alert-warning" role="alert" style="font-size: 0.75rem" alert-dismissible >
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="color:#b87741; font-size: 1.2rem; line-height: 1.2;">×</button>
+        <?php echo $this->session->flashdata('error'); ?>
+      </div>
+    <?php } ?>
     <div class="row grid-margin">
                   <div class="col-lg-12">
               <div class="card">
@@ -18,35 +24,32 @@
                   <div class="form-group">
                         <div class="row">
                           
-                          <div class="col form-group">
-                          <label for="departmentID">Department</label>
-                          <select class="form-control select2" id="description" name="departmentID" style="width: 100%;" required>
-                          <option value=""></option>
-                            <?php
-                            foreach($results['department'] as $department)
-                            {
-                            echo '<option value="'.$department->departmentID.'">'.$department->description.'</option>';
-                            }
-                            ?>  
-                    </select>
-                         <!-- <select class="form-control select2" name="departmentID" id="description" required>
-                            <option value="">No Selected</option>
-                            <?php foreach($results['department'] as $row):?>
-                            <option value="<?php echo $row->departmentID;?>"><?php echo $row->description;?></option>
-                            <?php endforeach;?>
-                         </select> -->
-                        </div>
+                          <!-- <div class="col form-group">
+                              <label for="departmentID">Department</label>
+                              <select class="form-control select2" id="description" name="departmentID" style="width: 100%;" required>
+                                <option value=""></option>
+                                  <?php
+                                  foreach($results['department'] as $department)
+                                  {
+                                  echo '<option value="'.$department->departmentID.'">'.$department->description.'</option>';
+                                  }
+                                  ?>  
+                              </select>
+                        </div> -->
 
-                        <div class="col form-group">
-                          <label>Employee Name</label>
-                            <select class="form-control select2" id="employee" name="employeeID" required>
+                        <!-- <div class="col form-group">
+                          <label for="employeeID">Employee Name</label>
+                            <select class="form-control select2" id="employee" name="employeeID" style="width: 100%;" required>
                               <option value=""></option>
                             </select>
-                        </div>
-
+                        </div> -->
                         <div class="col form-group">
-                          <label>Payslip</label>
-                          <input type="file" name="userImage" id="payslip" class="file-upload-default" accept="application/pdf" required>
+                          <label for="payslipdate">Payslip Date</label>
+                          <input id="payslipdate" type="date" name="payslipdate" class="form-control" value="<?php echo date('Y-m-d'); ?>" required>
+                        </div>
+                        <div class="col form-group">
+                          <label for="payslip">Payslip</label>
+                          <input type="file" name="userImage[]" id="payslip" class="file-upload-default" accept="application/pdf" multiple="">
                           <div class="input-group col-xs-6">
                             <input type="text" class="form-control file-upload-info" disabled>
                             <span class="input-group-append">
@@ -55,21 +58,12 @@
                             <input type="submit" name="action" id="action" class="btn btnUpload btn-success btn-icon-text ml-2" value="Upload" /> 
                             <!-- <input type="submit" name="action" id="action" class="btn btn-success btn-icon-text ml-2" value="Upload"/>  -->
                           </div>
+                          <label id="error" class="error mt-2 text-danger"></label>
                         </div>
 
-                       <!--  <div class="col form-group">
-                          <label>w</label>
-                          
-                        </div> -->
-
-                        
-                        </div>
-
+                      </div>
                   </div>
-                  <!-- <div class="modal-footer">
-        <input type="submit" name="action" id="action" class="btn btnUpload btn-warning btn-rounded" value="Upload" /> 
-        </div> -->
-      </form>
+                </form>
                 </div>
               </div>
             </div>
@@ -90,6 +84,7 @@
                 <span><?php if($this->session->flashdata('employee')=="success") echo '<script type="text/javascript"> showSuccessToast(); </script>';?></span>
                 <thead>
                   <tr>
+                      <th style="width: 40px ! important;">Employee No.</th>
                       <th>Employee Name</th>
                       <th>Position</th>
                       <th>Department</th>
@@ -103,10 +98,11 @@
                         foreach ($results['payslip'] as $frow) {
 
                           echo '<tr>';
+                          echo '<td>'.str_pad($frow->employeeID, 6, "0", STR_PAD_LEFT);'</td>';
                           echo '<td>'.$frow->firstname.' '.$frow->lastname.'</td>';
                           echo '<td>'.$frow->positiondescription.'</td>';
                           echo '<td>'.$frow->description.'</td>';
-                          echo '<td>'.$frow->payslipuploaded.'</td>';
+                          echo '<td>'.date("F d, Y",strtotime($frow->payslipdate)).'</td>';
                           echo '<td><a href="Viewpayslip/preview?auth='.$frow->encryptID.'&id='.$frow->payslipID.'" target="_blank" ><button type="button" class="btn btn-outline-warning btn-fw" style="margin-right: 10px;"><i class="mdi mdi-eye btn-icon-prepend"></i>Preview</button></a>
                           <a class="btn btn-outline-danger btn-fw" style="margin-right: 50px;" href="Uploadpayslip/deletedata?id='.$frow->payslipID.'" ><i class="mdi mdi-close btn-icon-prepend"></i>Delete</a></td>';
 
@@ -122,6 +118,13 @@
   </div>
 </div>
 
+<div class="modal fade" id="loader" tabindex="-1" role="dialog" aria-labelledby="loaderModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,.85);">
+  <div class="modal-dialog" role="document" style="margin-top: 0 !important;">
+      <!-- <img src="<?php echo base_url(); ?>assets/images/loader2.gif" /> -->
+      <div class="loader" style="margin-bottom: 60px;"></div>
+      <div style="color:white; font-size: 1rem;">Uploading payslip</div>
+  </div>
+</div>
  <script>
   $(function () {
     $('.select2').select2();
@@ -149,6 +152,97 @@
             }); 
   });
 </script>
+
+<style>
+    .modal {
+      text-align: center;
+      padding: 0!important;
+    }
+
+    .modal:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+      margin-right: -4px;
+    }
+
+    .modal-dialog {
+      display: inline-block;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .loader {
+  margin: 100px auto;
+  font-size: 13px;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-animation: load5 1.1s infinite ease;
+  animation: load5 1.1s infinite ease;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+@-webkit-keyframes load5 {
+  0%,
+  100% {
+    box-shadow: 0em -2.6em 0em 0em #ffffff, 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.5), -1.8em -1.8em 0 0em rgba(255,255,255, 0.7);
+  }
+  12.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.7), 1.8em -1.8em 0 0em #ffffff, 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.5);
+  }
+  25% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.5), 1.8em -1.8em 0 0em rgba(255,255,255, 0.7), 2.5em 0em 0 0em #ffffff, 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+  }
+  37.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.5), 2.5em 0em 0 0em rgba(255,255,255, 0.7), 1.75em 1.75em 0 0em #ffffff, 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+  }
+  50% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.5), 1.75em 1.75em 0 0em rgba(255,255,255, 0.7), 0em 2.5em 0 0em #ffffff, -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+  }
+  62.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.5), 0em 2.5em 0 0em rgba(255,255,255, 0.7), -1.8em 1.8em 0 0em #ffffff, -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+  }
+  75% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.5), -1.8em 1.8em 0 0em rgba(255,255,255, 0.7), -2.6em 0em 0 0em #ffffff, -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+  }
+  87.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.5), -2.6em 0em 0 0em rgba(255,255,255, 0.7), -1.8em -1.8em 0 0em #ffffff;
+  }
+}
+@keyframes load5 {
+  0%,
+  100% {
+    box-shadow: 0em -2.6em 0em 0em #ffffff, 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.5), -1.8em -1.8em 0 0em rgba(255,255,255, 0.7);
+  }
+  12.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.7), 1.8em -1.8em 0 0em #ffffff, 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.5);
+  }
+  25% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.5), 1.8em -1.8em 0 0em rgba(255,255,255, 0.7), 2.5em 0em 0 0em #ffffff, 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+  }
+  37.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.5), 2.5em 0em 0 0em rgba(255,255,255, 0.7), 1.75em 1.75em 0 0em #ffffff, 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+  }
+  50% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.5), 1.75em 1.75em 0 0em rgba(255,255,255, 0.7), 0em 2.5em 0 0em #ffffff, -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+  }
+  62.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.5), 0em 2.5em 0 0em rgba(255,255,255, 0.7), -1.8em 1.8em 0 0em #ffffff, -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+  }
+  75% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.5), -1.8em 1.8em 0 0em rgba(255,255,255, 0.7), -2.6em 0em 0 0em #ffffff, -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+  }
+  87.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.5), -2.6em 0em 0 0em rgba(255,255,255, 0.7), -1.8em -1.8em 0 0em #ffffff;
+  }
+}
+
+</style>
 
 <!-- <button class="btn btn-outline-success" onclick="showSwal(\'warning-message-and-cancel\')">Click here!</button> -->
 

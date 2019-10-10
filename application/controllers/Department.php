@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				    $data = $this->input->post("description");
 		            $this->load->model('Department_model');  
 		            $this->Department_model->adddepartment($data); 
-		            $this->session->set_flashdata('department', 'success');  
+		            $this->session->set_flashdata('department', 'dept');  
 		            redirect("Department");
 					$this->reservate();				       
 				}else{

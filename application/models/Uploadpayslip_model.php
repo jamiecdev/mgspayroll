@@ -15,7 +15,7 @@ class Uploadpayslip_model extends CI_Model
             ON employee.positionID=position.positionID
             INNER JOIN department
             ON employee.departmentID=department.departmentID
-
+            order by payslipdate
         ');
     
           $fullname = $this->db->query('
@@ -42,6 +42,13 @@ class Uploadpayslip_model extends CI_Model
         {  
            $this->db->insert('payslip', $data);
         }
+
+    public function updatepayslip($employeeID, $payslipdate, $data)  
+    {  
+       $this->db->where("employeeID", $employeeID);
+       $this->db->where("payslipdate", $payslipdate);  
+       $this->db->update("payslip", $data);  
+    }
 
     public function fetch_single_user($employeeID)  
         {  

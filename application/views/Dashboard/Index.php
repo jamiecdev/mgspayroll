@@ -4,15 +4,53 @@
       if($this->session->flashdata('dashboard')=="success")
           echo '<script type="text/javascript"> showWelcomeToast("'.$this->session->userdata('userdata')['fullname'].'")</script>';
         ?>
-      </span>   
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-12">
-                  <div class="row portfolio-grid">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+      </span> 
+        <div class="card">
+          <div class="card-body">
+
+            <div class="row">
+              <div class="col ml-2 mr-2 mb-2 mt-2" class="text-center" style="background-color: #ffbe61">
+                <a href="http://www.blackcoders.net/enterprise-resource-planning.php" target="_blank"><img src="<?=base_url(); ?>assets/images/as.svg" style="height: auto; width: auto;"></a>
+                <h3  style="font-family: 'Roboto'; font-weight:Bold; color: #FFF; letter-spacing: 3px; text-align: center;">ACCOUNTING<br>SYSTEM</h3>
+              </div>
+              <div class="col ml-2 mr-2 mb-2 mt-2" class="text-center" style="background-color: #f29d56">
+                <a href="http://www.blackcoders.net/enterprise-resource-planning.php" target="_blank"><img src="<?=base_url(); ?>assets/images/warehouse.svg"  style="height: auto; width: auto;"></a>
+                <h3 style="font-family: 'Roboto'; font-weight:Bold; color: #FFF; letter-spacing: 3px; text-align: center;">INVENTORY AND<br>WAREHOUSE MANAGEMENT<br> 
+              </div>
+              <div class="col ml-2 mr-2 mb-2 mt-2" class="text-center" style="background-color: #ffbe61">
+                <a href="http://www.blackcoders.net/enterprise-resource-planning.php" target="_blank"><img src="<?=base_url(); ?>assets/images/pos.svg"  style="height: auto; width: auto;"></a>
+                <h3 style="font-family: 'Roboto'; font-weight:Bold; color: #FFF; letter-spacing: 3px; text-align: center;">POS SYSTEM</h3>
+              </div>
+              <div class="col ml-2 mr-2 mb-2 mt-2" class="text-center" style="background-color: #f29d56">
+                <a href="http://www.blackcoders.net/enterprise-resource-planning.php" target="_blank"><img src="<?=base_url(); ?>assets/images/scm.svg"  style="height: auto; width: auto;"></a>
+                <h3 style="font-family: 'Roboto'; font-weight:Bold; color: #FFF; letter-spacing: 3px; text-align: center;">SUPPLY CHAIN<br>MANAGEMENT SYSTEM</h3>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col ml-2 mr-2  mb-2 mt-2" class="text-center" style="background-color: #f29d56">
+                <a href="http://www.blackcoders.net/enterprise-resource-planning.php" target="_blank"><img src="<?=base_url(); ?>assets/images/finance.svg" style="height: auto; width: auto;"></a>
+                <h3 style="font-family: 'Roboto'; font-weight:Bold; color: #FFF; letter-spacing: 3px; text-align: center;">FINANCE<br>MANAGEMENT SYSTEM</h3>
+              </div>
+              <div class="col ml-2 mr-2 mb-2 mt-2" class="text-center" style="background-color: #ffbe61">
+                <a href="http://www.blackcoders.net/enterprise-resource-planning.php" target="_blank"><img src="<?=base_url(); ?>assets/images/crm.svg"  style="height: auto; width: auto;"></a>
+                <h3 style="font-family: 'Roboto'; font-weight:Bold; color: #FFF; letter-spacing: 3px; text-align: center;">CUSTOMER RELATIONS<br>MANAGEMENT SYSTEM</h3>
+              </div>
+              <div class="col ml-2 mr-2 mb-2 mt-2" class="text-center" style="background-color: #f29d56">
+                <a href="http://www.blackcoders.net/enterprise-resource-planning.php" target="_blank"><img src="<?=base_url(); ?>assets/images/purchase.svg"  style="height: auto; width: auto;"></a>
+                <h3 style="font-family: 'Roboto'; font-weight:Bold; color: #FFF; letter-spacing: 3px; text-align: center;">PURCHASES MANAGEMENT<br> SYSTEM</h3>
+              </div>
+              <div class="col ml-2 mr-2 mb-2 mt-2" class="text-center" style="background-color: #ffbe61">
+                <a href="http://www.blackcoders.net/enterprise-resource-planning.php" target="_blank"><img src="<?=base_url(); ?>assets/images/logistics.svg"  style="height: auto; width: auto;"></a>
+                <h3 style="font-family: 'Roboto'; font-weight:Bold; color: #FFF; letter-spacing: 3px; text-align: center;">LOGISTICS</h3>
+              </div>
+            </div>
+
+                    
+
+
+
+                    <!-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
                       <figure class="effect-text-in">
                         <img src="<?=base_url(); ?>assets/images/auth/10.png" alt="image"/>
                         <figcaption>
@@ -107,13 +145,15 @@
                           <p>CUSTOMER SERVICE</p>
                         </figcaption>
                       </figure>
-                    </div>
-                </div>
-              </div>
-            </div>
+                    </div> -->
           </div>
         </div>
-      </div>
-    </div>
+        <footer class="footer">
+          <!-- Copyright -->
+          <div class="text-center">© 2019 All Rights Reserved.
+            <a href="http://www.blackcoders.net" target="_blank"><img class="ml-3" src="<?=base_url(); ?>assets/images/auth/logo.png" style="height: 30px; width: 90px"></a>
+          </div>
+          <!-- Copyright -->
+        </footer>
   </div>
 </div>

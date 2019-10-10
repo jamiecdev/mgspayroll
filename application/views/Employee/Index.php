@@ -1,3 +1,5 @@
+<script src="<?php echo base_url(); ?>assets/js/fileupload.js"></script>
+
 <div class="main-panel">
   <div class="content-wrapper">
     <nav aria-label="breadcrumb">
@@ -35,6 +37,7 @@
                 <span><?php if($this->session->flashdata('employee')=="success") echo '<script type="text/javascript"> showSuccessToast() </script>';?></span>
                 <thead>
                   <tr>
+                      <th style="width: 40px ! important;">Employee No.</th>
                       <th>User</th>
                       <th>Position</th>
                       <th>Department</th>
@@ -49,6 +52,7 @@
                         foreach ($results['employee'] as $r) {
 
                           echo '<tr>';
+                          echo '<td>'.str_pad($r->employeeID, 6, "0", STR_PAD_LEFT);'</td>';
                           echo '<td class="py-1 user-circle">
                             <a id="'.$r->employeeID.'" class="profilepic">';
                             if($r->photo==""){
@@ -60,7 +64,7 @@
                           echo '<td>'.$r->positiondescription.'</td>';
                           echo '<td>'.$r->description.'</td>';  
                           echo '<td>'.$r->contactinfo.'</td>'; 
-                          echo '<td>'.$r->hireddate.'</td>';  
+                          echo '<td>'.date("F d, Y",strtotime($r->hireddate)).'</td>';  
                           echo '<td>';
                           if($r->status=="Active"){
                               echo  '<label class="badge badge-success">'.$r->status.'</label></td>';
@@ -111,7 +115,7 @@
                       <div class="form-group">
                         <div class="row">
                           <div class="col form-group">
-                            <label for="firstname">First Name</label>
+                            <label for="firstname">First Name<code>*</code></label>
                             <input id="firstname" type="text" name="firstname" class="form-control input" autocomplete="off"  required>
                           </div>
                           <div class="col">
@@ -119,12 +123,13 @@
                             <input id="middlename" type="text" name="middlename" class="form-control input" autocomplete="off">
                           </div>
                           <div class="col form-group">
-                            <label for="lastname">Last Name</label>
+                            <label for="lastname">Last Name<code>*</code></label>
                             <input id="lastname" type="text" name="lastname" class="form-control input" autocomplete="off" required>
                           </div>
-                          <div class="col">
-                            <label for="gender">Gender</label>
+                          <div class="col form-group">
+                            <label for="gender">Gender<code>*</code></label>
                             <select class="form-control" name="gender" id="gender" required>
+                              <option value="">No Selected</option>
                               <option>Male</option>
                               <option>Female</option>
                             </select>
@@ -139,15 +144,15 @@
                             <input id="housenumber" type="text" name="housenumber" class="form-control input" autocomplete="off">
                           </div>
                           <div class="col form-group">
-                            <label for="streetname">Building/Street Name</label>
+                            <label for="streetname">Building/Street Name<code>*</code></label>
                             <input id="streetname" type="text" name="streetname" class="form-control input" autocomplete="off" required>
                           </div>
                           <div class="col form-group">
-                            <label for="barangay">Barangay</label>
+                            <label for="barangay">Barangay<code>*</code></label>
                             <input id="barangay" type="text" name="barangay" class="form-control input" autocomplete="off" required>
                           </div>
                           <div class="col form-group">
-                            <label for="city">City/Municipality</label>
+                            <label for="city">City/Municipality<code>*</code></label>
                             <input id="city" type="text" name="city" class="form-control input" autocomplete="off" required>
                           </div>
                         </div>
@@ -156,22 +161,23 @@
                       <div class="form-group">
                         <div class="row">
                           <div class="col form-group">
-                            <label for="birthdate">Birthdate</label>
+                            <label for="birthdate">Birthdate<code>*</code></label>
                             <input id="birthdate" type="date" name="birthdate" class="form-control"  required>
                           </div>
                           <div class="col form-group">
-                            <label for="contactinfo">Contact No.</label>
-                            <input id="contactinfo" type="text" name="contactinfo" class="form-control" autocomplete="off" required>
+                            <label for="contactinfo">Contact No.<code>*</code></label>
+                            <input id="contactinfo" type="text" name="contactinfo" class="form-control" minlength=13 autocomplete="off" required>
                           </div>
-                          <div class="col">
-                            <label for="civilstatus">Civil Status</label>
-                            <select class="form-control" name="civilstatus" id="civilstatus">
+                          <div class="col form-group">
+                            <label for="civilstatus">Civil Status<code>*</code></label>
+                            <select class="form-control" name="civilstatus" id="civilstatus" required>
+                              <option value="">No Selected</option>
                               <option>Single</option>
                               <option>Married</option>
                             </select>
                           </div>
                           <div class="col form-group">
-                            <label for="citizenship">Citizenship</label>
+                            <label for="citizenship">Citizenship<code>*</code></label>
                             <input id="citizenship" type="text" name="citizenship" class="form-control input" autocomplete="off" required>
                           </div>
                         </div>
@@ -180,13 +186,13 @@
                       <div class="form-group">
                         <div class="row">
                           <div class="col form-group">
-                            <label for="hireddate">Hired Date</label>
+                            <label for="hireddate">Hired Date<code>*</code></label>
                             <input id="hireddate" type="date" name="hireddate" class="form-control"  required>
                           </div>
-                          <div class="col">
-                            <label for="description">Department</label>
-                            <select class="form-control select2" id="description" name="departmentID" style="width: 100%;">
-                              <option>No Selected</option>
+                          <div class="col form-group">
+                            <label for="description">Department<code>*</code></label>
+                            <select class="form-control select2" id="description" name="departmentID" style="width: 100%;" required>
+                              <option value="">No Selected</option>
                               <?php
                               foreach($results['department'] as $department)
                               {
@@ -195,16 +201,17 @@
                               ?>  
                             </select>
                           </div>
-                          <div class="col">
-                            <label for="positionID">Position</label>
+                          <div class="col form-group">
+                            <label for="positionID">Position<code>*</code></label>
                             <input type="hidden" id="hiddenPosition" name="hiddenPosition">
-                            <select class="form-control select2" id="position" name="positionID" style="width: 100%;">
-                              <option>No Selected</option>
+                            <select class="form-control select2" id="position" name="positionID" style="width: 100%;" required>
+                              <option value="">No Selected</option>
                             </select>
                           </div>
-                          <div class="col">
-                            <label for="status">Status</label>
-                            <select class="form-control" name="status" id="status">
+                          <div class="col form-group">
+                            <label for="status">Status<code>*</code></label>
+                            <select class="form-control" name="status" id="status" required>
+                              <option value="">No Selected</option>
                               <option>Active</option>
                               <option>Terminated</option>
                               <option>End of Contract</option>
@@ -213,93 +220,95 @@
                           </div>
                         </div>
                       </div>
-
-
                     </div>
-                    <!-- EMPLOYEE INFO -->
-                     <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab"> 
 
-                  <form class="forms-group">
-                    <div class="form-group">
-                      <label for="username">Username</label>
-                      <input type="text" class="form-control input" id="username" name="username" placeholder="Username" autocomplete="off" required>
+                    <!-- LOGIN INFO -->
+                    <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab"> 
+                      <form class="forms-group">
+                        <div class="form-group">
+                          <label for="username">Username<code>*</code></label>
+                          <input type="text" class="form-control input" id="username" name="username" placeholder="Username" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="password">Password<code>*</code></label>
+                          <input type="text" class="form-control input" id="password" name="password" placeholder="Password" autocomplete="off" required>
+                        </div>
+                        <div class="form-check form-check-flat form-check-primary">
+                          <label class="form-check-label">
+                            <input type="hidden" name="role_id" value="2">
+                            <input type="checkbox" name="role_id" value="1">
+                           Admin
+                          </label>
+                        </div>
+                      </form>
                     </div>
-                    <div class="form-group">
-                      <label for="password">Password</label>
-                      <input type="text" class="form-control input" id="password" name="password" placeholder="Password" autocomplete="off" required>
-                    </div>
-                    <!-- <div class="form-group">
-                      <label for="role">Role</label>
-                      <input type="text" class="form-control" id="role_id" name="role_id" placeholder="role">
-                    </div> -->
-                    <div class="form-check form-check-flat form-check-primary">
-                      <label class="form-check-label">
-                        <input type="hidden" name="role_id" value="2">
-                        <input type="checkbox" name="role_id" value="1">
-                       Admin
-                      </label>
-                    </div>
-                  </form>
-                </div>
-
 
                     <!-- PAYROLL DETAILS -->
                     <div class="tab-pane fade" id="pills-detail" role="tabpanel" aria-labelledby="pills-detail-tab">
                       <div>
                         <div class="row">
-                        <div class="col form-group">
-                          <label for="basicsalary">Basic Salary</label>
-                          <input id="basicsalary" type="number" name="basicsalary" class="form-control input" autocomplete="off"  required>
-                        </div>
-                        <div class="col form-group">
-                          <label for="dailyrate">Daily Rate</label>
-                          <input id="dailyrate" type="number" name="dailyrate" class="form-control input" autocomplete="off" required>
-                        </div>
-                        <div class="col form-group">
-                          <label for="allowance">Allowance</label>
-                          <input id="allowance" type="number" name="allowance" class="form-control input" autocomplete="off">
-                        </div>
+                          <div class="col form-group">
+                            <label for="basicsalary">Basic Salary<code>*</code></label>
+                            <div class="input-group mr-sm-2 mb-sm-0">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">₱</span>
+                              </div>
+                              <input id="basicsalary" name="basicsalary" class="form-control input" data-inputmask="'alias': 'currency'" autocomplete="off" required>
+                            </div>
+                          </div>
+                          <div class="col form-group">
+                            <label for="dailyrate">Daily Rate<code>*</code></label>
+                            <div class="input-group mr-sm-2 mb-sm-0">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">₱</span>
+                              </div>
+                            <input id="dailyrate" name="dailyrate" class="form-control input" data-inputmask="'alias': 'currency'" autocomplete="off" required>
+                          </div>
+                          </div>
+                          <div class="col form-group">
+                            <label for="allowance">Allowance</label>
+                            <div class="input-group mr-sm-2 mb-sm-0">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">₱</span>
+                              </div>
+                            <input id="allowance" name="allowance" class="form-control input" data-inputmask="'alias': 'currency'" autocomplete="off">
+                          </div>
+                          </div>
                         </div>
                       </div>
-
                       <div>
                         <div class="row">
-                        <div class="col form-group">
-                          <label for="tinnumber">Tin No.</label>
-                          <input id="tinnumber" type="text" name="tinnumber" class="form-control input" autocomplete="off">
-                        </div>
-                        <div class="col form-group">
-                          <label for="sssnumber">SSS No.</label>
-                          <input id="sssnumber" type="text" name="sssnumber" class="form-control input" autocomplete="off">
-                        </div>
+                          <div class="col form-group">
+                            <label for="tinnumber">TIN</label>
+                            <input id="tinnumber" type="text" name="tinnumber" class="form-control input" minlength=11 autocomplete="off">
+                          </div>
+                          <div class="col form-group">
+                            <label for="sssnumber">SSS No.</label>
+                            <input id="sssnumber" type="text" name="sssnumber" class="form-control input" minlength=12 autocomplete="off">
+                          </div>
                         </div>
                       </div>
-
                       <div>
                         <div class="row">
-                        <div class="col form-group">
-                          <label for="philhealthnumber">Philhealth No.</label>
-                          <input id="philhealthnumber" type="text" name="philhealthnumber" class="form-control input" autocomplete="off">
-                        </div>
-                        <div class="col form-group">
-                          <label for="pagibignumber">Pag-IBIG MID No.</label>
-                          <input id="pagibignumber" type="text" name="pagibignumber" class="form-control input" autocomplete="off">
-                        </div>
+                          <div class="col form-group">
+                            <label for="philhealthnumber">Philhealth No.</label>
+                            <input id="philhealthnumber" type="text" name="philhealthnumber" class="form-control input" minlength=14 autocomplete="off">
+                          </div>
+                          <div class="col form-group">
+                            <label for="pagibignumber">Pag-IBIG MID No.</label>
+                            <input id="pagibignumber" type="text" name="pagibignumber" class="form-control input" minlength=14 autocomplete="off">
+                          </div>
                         </div>
                       </div>
-                      
-                    </div>
-                    <!-- PAYROLL DETAILS -->     
+                    </div>    
                   </div>
-                    <div class="modal-footer">
-                      <input type="hidden" name="employeeID" id="employeeID" />  
-                      <input type="submit" name="action" id="action" class="btn btn-warning btn-rounded" value="Add" />   
+                  <div class="modal-footer">
+                    <input type="hidden" name="employeeID" id="employeeID" />  
+                    <input type="submit" name="action" id="action" class="btn btn-warning btn-rounded" value="Add" />   
                   </div>
-                  </fieldset>
-                </div>
-                  </form>
                 </div>
               </div>
+            </div>
             </fieldset>
           </div>
         </form>
@@ -340,6 +349,7 @@
   </div>
 </div>
 <script>
+
   $(function () {
     $('.select2').select2();
 

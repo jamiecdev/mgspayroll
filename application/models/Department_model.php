@@ -60,7 +60,6 @@
 
               $this->db->where("departmentID", $departmentID);  
               $this->db->update("department", $data1);  
-              //$departmentstatus = $this->input->post('departmentstatus');
               return 'true';
             }else{
               return 'false|Department is currently in used!'; 
@@ -72,7 +71,6 @@
 
               $this->db->where("departmentID", $departmentID);  
               $this->db->update("department", $data1);  
-              //$departmentstatus = $this->input->post('departmentstatus');
               return 'true|';
         }
       }else{

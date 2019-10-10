@@ -23,6 +23,8 @@
   <script src="<?php echo base_url(); ?>assets/js/jquery.mask.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/owl-carousel.js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendors/inputmask/jquery.inputmask.bundle.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/inputmask.js"></script>
 </body>
   <script  type="text/javascript">  
     $(document).ready(function(){
@@ -48,7 +50,17 @@
       });
 
       $('.btnUpload').unbind('click').bind('click', function(event){
-        fileName = $('input[type=file]').val();
+        
+        document.getElementById("error").innerHTML = "";
+        if($('.file-upload-default')[0].files.length==0){
+          document.getElementById("error").innerHTML = "*This field is required.";
+          event.preventDefault();
+          return;
+        }
+
+        $('#loader').modal({backdrop: 'static', keyboard: false});
+        /*event.preventDefault();*/
+        /*fileName = $('input[type=file]').val();
         dots = fileName.split(".");
 
         //get the part AFTER the LAST period.
@@ -56,10 +68,18 @@
         if(fileType!=".pdf"){
           showUploadError();
           event.preventDefault();
-        }
+        }*/
       });
 
       $('#contactinfo').mask('0000-000-0000');
+
+      $('#tinnumber').mask('000-000-000');
+
+      $('#sssnumber').mask('00-0000000-0');
+
+      $('#philhealthnumber').mask('00-000000000-0');
+
+      $('#pagibignumber').mask('0000-0000-0000');
 
       $('#addModal').on("hidden.bs.modal", function() {
         $(this).find('form').trigger('reset');
